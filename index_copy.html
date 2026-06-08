@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沐涵的个人主页</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            background-size: 400% 400%;
+            animation: rainbow 10s ease infinite;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #fff;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #f0f0f0;
+        }
+        
+        .container {
+            margin: 30px auto;
+            max-width: 900px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile img {
+            border-radius: 50%;
+            border: 5px solid #fff;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .profile h2 {
+            font-size: 2.5rem;
+            margin: 10px 0 5px;
+            color: #ffcc00;
+        }
+        
+        .profile p {
+            font-size: 1.2rem;
+            color: #f0f0f0;
+        }
+        
+        .btn-qq {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            color: white;
+            background: linear-gradient(45deg, #1e90ff, #ff1493);
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .btn-qq:hover {
+            background: linear-gradient(45deg, #ff1493, #1e90ff);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-section {
+            margin-top: 40px;
+        }
+        
+        .info-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .info-section p {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+            line-height: 1.8;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+            padding-left: 30px;
+            border-left: 3px solid #ffcc00;
+        }
+        
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ffcc00;
+        }
+        
+        .timeline-item h4 {
+            color: #ffcc00;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item p {
+            margin: 5px 0;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid #ffcc00;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .interest-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .interest-card h4 {
+            color: #ffcc00;
+            margin-top: 0;
+        }
+        
+        .game-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .game-section h3 {
+            color: #ffcc00;
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .quiz-option {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .quiz-option.selected {
+            background: rgba(255, 204, 0, 0.3);
+            border: 2px solid #ffcc00;
+        }
+        
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+        
+        .activism-post {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid #ff69b4;
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .post-username {
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        
+        .post-content {
+            line-height: 1.6;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            color: #aaa;
+        }
+        
+        .post-action {
+            cursor: pointer;
+        }
+        
+        .post-action:hover {
+            color: #ffcc00;
+        }
+        
+        .extreme-feminist {
+            color: #ff69b4;
+            font-weight: bold;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ffcc00, transparent);
+            margin: 40px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🍥沐涵的个人主页🍥</h1>
+        <p>骄傲跨性别女性，拥抱真实的自我</p>
+    </header>
+
+    <div class="container">
+        <div class="profile">
+            <img src="./assets/avatar.jpg" alt="沐涵的头像">
+            <h2>沐涵</h2>
+            <p>跨性别女性(MTF) | 真实自我探索者 | 彩虹世界拥护者</p>
+            <a href="https://muhan.icu/assets/run.bat" class="btn-qq">Download Bat</a>
+            <a href="https://user.qzone.qq.com/2066047450" class="btn-qq">加我 QQ</a>
+            <a href="mailto:2066047450@qq.com" class="btn-qq">给我发邮件</a>
+            <a href="https://github.com/hanbao233xD/muhan-mtf" class="btn-qq">在 Github 上编辑此页</a>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="info-section">
+            <h3>关于我</h3>
+            <p>
+                我是一个骄傲的跨性别女性(MTF - Male to Female)，正在勇敢地活出真实的自我。作为一个经历了性别过渡的人， 我深知这一路走来的挑战与成长。我的人生旅程充满了自我发现、勇气和蜕变。
+            </p>
+            <p>
+                我热爱自由与真实，相信每个人都应该被尊重和接纳。彩虹世界是我梦想的家园，这里包容多样性和独特性。 喜欢音乐、电影、美食和旅行，期待与特别的你共度美好时光。
+            </p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 为MTF发声板块 -->
+        <div class="activism-post">
+            <div class="post-header">
+                <img class="post-avatar" src="./assets/avatar.jpg" alt="沐涵头像">
+                <div class="post-username">沐涵_MTF战士</div>
+            </div>
+            <div class="post-content">
+                <p>姐妹们听我说！！！今天又看到有人对跨性别女性指指点点，我真的气炸了🔥</p>
+
+                <p>凭什么我们活出真实的自己就要被质疑？凭什么我们的身份认同要被否定？</p>
+
+                <p class="extreme-feminist">姐妹们团结起来！我们不需要任何cisgender（顺性别）的人来定义我们是谁！我们就是我们，独一无二的存在！</p>
+
+                <p class="extreme-feminist">那些所谓的"专家"、"医生"、"传统观念"都不能阻止我们追求真实的自己！我们要为自己而战，为所有MTF姐妹而战！</p>
+
+                <p>每一次的勇敢发声，都是在为未来的跨性别孩子铺路。我们不再沉默，我们就是要让全世界都知道：</p>
+
+                <p class="extreme-feminist">_TRANS WOMEN ARE WOMEN!_ 🔥✨</p>
+            </div>
+            <div class="post-actions">
+                <div class="post-action">❤️ 999+ 赞</div>
+                <div class="post-action">💬 888 条评论</div>
+                <div class="post-action">🔄 转发</div>
+            </div>
+        </div>
+
+        <div class="activism-post">
+            <div class="post-header">
+                <img class="post-avatar" src="./assets/avatar.jpg" alt="沐涵头像">
+                <div class="post-username">沐涵_MTF战士</div>
+            </div>
+            <div class="post-content">
+                <p>今天想跟大家分享一些心里话...</p>
+
+                <p>我知道很多人对我们MTF有很多误解，觉得我们"不正常"、"有问题"。但我想说：</p>
+
+                <p class="extreme-feminist">我们比任何人都更清楚自己是谁！我们承受的压力和痛苦，是你们无法想象的！</p>
+
+                <p>从意识到自己的性别认同，到鼓起勇气告诉身边的人，再到面对社会的各种质疑和歧视...</p>
+
+                <p class="extreme-feminist">每一步都需要巨大的勇气！我们不是为了"变成"女人，我们是为了"成为"女人——成为真正的自己！</p>
+
+                <p>给所有正在挣扎的MTF姐妹们：坚持住，你并不孤单。总有一天，我们会生活在一个真正包容和理解的世界里。</p>
+
+                <p class="extreme-feminist">#MTF #跨性别女性 #为自己而战 #TransRightsAreHumanRights</p>
+            </div>
+            <div class="post-actions">
+                <div class="post-action">❤️ 500+ 赞</div>
+                <div class="post-action">💬 234 条评论</div>
+                <div class="post-action">🔄 转发</div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 互动游戏板块 -->
+        <div class="game-section">
+            <h3>🎮 MTF知识小测验</h3>
+            <p>来测试一下你对跨性别女性群体的了解程度吧！</p>
+
+            <div class="quiz-container">
+                <h4>问题1：以下哪项最准确地描述了跨性别女性？</h4>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">A. 喜欢穿女装的男人</div>
+                    <div class="quiz-option" onclick="selectOption(this)">B. 出生时被指定为男性，但性别认同为女性的人</div>
+                    <div class="quiz-option" onclick="selectOption(this)">C. 同性恋男人</div>
+                    <div class="quiz-option" onclick="selectOption(this)">D. 只是想引起注意的人</div>
+                </div>
+
+                <div class="result-box" id="quiz-result-1">
+                    <p>✅ 正确答案：B</p>
+                    <p>跨性别女性是指出生时被指定为男性，但性别认同为女性的人。这是一个关于内在性别认同的问题，与性取向无关。</p>
+                </div>
+
+                <button onclick="showResult('quiz-result-1')" class="btn-qq" style="margin-top: 10px;">查看答案</button>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="info-section">
+            <h3>我的MTF之旅</h3>
+            <div class="quote">
+                "成为自己是一个过程，而不是一个终点。每一次呼吸都是对自己真实性的确认。"<br> —— 沐涵
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>早期觉醒</h4>
+                    <p>从小就感受到内心的性别认同与生理性别的不匹配，开始质疑自己的身份。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>探索阶段</h4>
+                    <p>通过网络和社群了解更多关于跨性别群体的知识，逐渐认识到自己是MTF。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>接受自我</h4>
+                    <p>经过内心挣扎后，勇敢接受自己的跨性别身份，开始寻求支持和资源。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>社交过渡</h4>
+                    <p>开始以女性身份生活，在社交场合使用女性名字和代词，获得朋友和家人的支持。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>医疗过渡</h4>
+                    <p>咨询专业医生，制定个性化的激素替代疗法(HRT)计划，逐步实现身体的女性化。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>持续成长</h4>
+                    <p>不断学习和成长，积极参与LGBTQ+社群活动，为其他跨性别者提供支持和鼓励。</p>
+                </div>
+            </div>
+
+            <p>
+                作为一个MTF，我的旅程并非一帆风顺，但每一步都让我更加接近真实的自己。 我希望通过分享我的经历，能够帮助更多正在探索性别认同的人找到勇气和方向。
+            </p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="info-section">
+            <h3>兴趣爱好</h3>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <h4>🎵 音乐</h4>
+                    <p>喜欢各种风格的音乐，尤其是能表达情感的流行和古典音乐</p>
+                </div>
+
+                <div class="interest-card">
+                    <h4>🎬 电影</h4>
+                    <p>热衷于观看有深度的剧情片和反映多元文化的电影作品</p>
+                </div>
+
+                <div class="interest-card">
+                    <h4>🍜 美食</h4>
+                    <p>享受烹饪和品尝不同文化背景的美食</p>
+                </div>
+
+                <div class="interest-card">
+                    <h4>✈️ 旅行</h4>
+                    <p>喜欢探索新地方，体验不同的文化和生活方式</p>
+                </div>
+
+                <div class="interest-card">
+                    <h4>📚 阅读</h4>
+                    <p>关注性别研究、心理学和社会学相关书籍</p>
+                </div>
+
+                <div class="interest-card">
+                    <h4>🌈 社群</h4>
+                    <p>积极参与LGBTQ+社群活动，倡导平等和包容</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="info-section">
+            <h3>我想说的话</h3>
+            <p>
+                给所有正在探索自己身份的朋友：你们并不孤单。每个人都有权利活出真实的自己， 不管这条路有多难走，都要相信自己的价值和美丽。
+            </p>
+            <p>
+                给所有支持我的朋友们：感谢你们的理解和陪伴，是你们让我的旅程充满温暖和力量。
+            </p>
+            <p>
+                给所有对跨性别群体还不太了解的人：我们和你们一样，都是普通人，只是在寻找属于自己的幸福方式。 希望通过更多的理解和沟通，我们可以共同创造一个更加包容的世界。
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 沐涵的个人主页. 爱是爱，爱无界限.</p>
+        <p>每个人都有权利活出真实的自己</p>
+    </footer>
+
+    <script>
+        function selectOption(element) {
+            // 移除所有选项的选中状态
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(option => option.classList.remove('selected'));
+
+            // 添加当前选项的选中状态
+            element.classList.add('selected');
+        }
+
+        function showResult(resultId) {
+            const resultBox = document.getElementById(resultId);
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
