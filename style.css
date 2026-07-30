@@ -1921,3 +1921,20 @@ html.jackpot-shake body {
     .advisor-jackpot { min-width: auto; padding: 28px; }
     .advisor-jackpot-reel { width: 54px; height: 66px; font-size: 1.6rem; }
 }
+
+/* ==========================================================
+   左侧毒蘑菇 GPU 测试 iframe（仅电脑端由 main.js 注入）
+   ========================================================== */
+#vsbm-side-frame {
+    position: fixed;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(340px, 26vw);
+    height: min(72vh, 720px);
+    border: 2px solid rgba(91, 206, 250, .65);
+    border-radius: 14px;
+    background: #131115;
+    box-shadow: 0 0 18px rgba(91, 206, 250, .35), 0 0 36px rgba(245, 169, 184, .28);
+    z-index: 60;
+}

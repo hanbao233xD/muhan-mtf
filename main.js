@@ -697,4 +697,18 @@
         window.addEventListener('resize', updateAvatarRect);
     }
 
+    /* ==========================================================
+       13. 电脑端左侧嵌入毒蘑菇 GPU 测试（本地克隆 vsbm.html）
+       ========================================================== */
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches &&
+        !/Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    if (isDesktop) {
+        const vsbmFrame = document.createElement('iframe');
+        vsbmFrame.id = 'vsbm-side-frame';
+        vsbmFrame.src = './vsbm.html';
+        vsbmFrame.title = '毒蘑菇 GPU 测试·头像版（volumeshader_bm by cznull）';
+        vsbmFrame.loading = 'lazy';
+        document.body.appendChild(vsbmFrame);
+    }
+
 })();
