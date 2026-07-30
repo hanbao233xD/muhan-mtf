@@ -1,0 +1,482 @@
+/* ==========================================================
+   fx-fireworks.css — 表单/烟花/宣言字特效包（richify §12 蓝粉白化）
+   提交特效 / 烟花庆祝 / 宣言字(goldFx 蓝粉化) / 宣言条彩蛋
+   ========================================================== */
+
+
+/* ---------- 骄傲签名墙表单 ---------- */
+
+.pride-fields {
+    display: grid;
+    gap: 12px;
+    margin: 14px 0 18px;
+}
+
+.pride-fields input {
+    border: 1.5px solid var(--card-line);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-size: .95rem;
+    outline: none;
+    background: #fff;
+    transition: border-color .25s, box-shadow .25s;
+}
+
+.pride-fields input:focus {
+    border-color: var(--trans-pink);
+    box-shadow: 0 0 0 3px rgba(245, 169, 184, .2);
+}
+
+
+/* ---------- §12 提交中整体脉冲（contactFormPulse） ---------- */
+
+.contact-form.is-submitting {
+    animation: contactFormPulse .72s ease-in-out infinite;
+}
+
+
+/* ---------- §12 提交按钮特效件 ---------- */
+
+.contact-submit {
+    position: relative;
+    overflow: visible;
+}
+
+.contact-submit-orb {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff, var(--trans-pink));
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.contact-form.is-submitting .contact-submit-orb {
+    opacity: 1;
+    animation: contactOrbSpin 1.1s linear infinite;
+}
+
+.contact-submit-ring {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(255, 255, 255, .35);
+    border-top-color: #fff;
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.contact-form.is-submitting .contact-submit-ring {
+    opacity: 1;
+    animation: contactRingSpin 1.4s linear infinite;
+}
+
+.contact-form.is-submitting .contact-submit-ring.delay {
+    animation-delay: -.7s;
+    right: 34px;
+}
+
+.contact-submit-sparks {
+    position: absolute;
+    inset: -6px;
+    border-radius: 16px;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 1.5px, transparent 2px), radial-gradient(circle, var(--trans-pink) 1.5px, transparent 2px);
+    background-size: 22px 22px, 30px 30px;
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.contact-form.is-submitting .contact-submit-sparks {
+    opacity: 1;
+    animation: contactSparksTwinkle .48s steps(2, end) infinite;
+}
+
+.contact-submit-beam {
+    position: absolute;
+    top: 0;
+    left: -45%;
+    width: 30%;
+    height: 100%;
+    transform: skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .85), transparent);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.contact-form.is-submitting .contact-submit-beam {
+    opacity: 1;
+    animation: shineSweep .85s ease-in-out infinite;
+}
+
+.contact-submit-fx {
+    position: absolute;
+    inset: -4px;
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+.contact-form.is-submitting .contact-submit-fx::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 2px solid rgba(245, 169, 184, .9);
+    animation: contactOrbPing .9s ease-out infinite;
+}
+
+
+/* ---------- §12 烟花层 ---------- */
+
+.fireworks-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 85;
+    pointer-events: none;
+    display: none;
+}
+
+.fireworks-layer.show {
+    display: block;
+}
+
+
+/* 全屏闪光（fireworksFlash） */
+
+.fireworks-flash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 42%, rgba(255, 255, 255, .95), rgba(91, 206, 250, .35) 45%, rgba(245, 169, 184, .25) 70%, transparent);
+    opacity: 0;
+}
+
+.fireworks-layer.show .fireworks-flash {
+    animation: fireworksFlash 1.6s ease-out both;
+}
+
+
+/* 烟花艺术字（fireworksWordartIn / fireworksWordartSpin / goldFxFloat） */
+
+.fireworks-wordart-wrap {
+    position: absolute;
+    left: 50%;
+    top: 34%;
+    transform: translate(-50%, -50%);
+}
+
+.fireworks-rainbow-border {
+    padding: 14px 26px;
+    border-radius: 22px;
+    background: conic-gradient(from var(--spin), var(--trans-blue), #fff, var(--trans-pink), var(--trans-blue));
+    box-shadow: 0 20px 60px rgba(91, 206, 250, .45);
+    animation: fireworksRainbowSpin 1.2s linear infinite, fireworksRainbowPulse .45s steps(2) infinite;
+}
+
+.fireworks-wordart {
+    padding: 8px 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .95);
+    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    font-weight: 900;
+    letter-spacing: .06em;
+    background-image: linear-gradient(90deg, var(--trans-blue), var(--trans-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fireworksWordartIn .7s cubic-bezier(.16, 1.2, .24, 1) both, goldFxFloat 2.4s ease-in-out .7s infinite, fireworksWordartSpin 1.1s steps(3, end) .7s infinite;
+}
+
+
+/* 页面震屏（fireworksScreenShake） */
+
+html.fireworks-shake body {
+    animation: fireworksScreenShake 90ms steps(2) infinite;
+}
+
+
+/* ---------- §12 宣言字（goldFx 蓝粉白化） ---------- */
+
+.gold-fx-type {
+    position: relative;
+    display: inline-block;
+    margin-top: 18px;
+    font-size: clamp(1rem, 2.6vw, 1.35rem);
+    font-weight: 900;
+    letter-spacing: .18em;
+}
+
+.gold-fx-type-core {
+    background: linear-gradient(90deg, var(--trans-blue), var(--trans-pink), #fff, var(--trans-blue));
+    background-size: 280% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: goldFxFlow 2.2s linear infinite;
+}
+
+.gold-fx-type-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, .95) 50%, transparent 60%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: goldFxShine 1.6s linear infinite;
+    pointer-events: none;
+}
+
+.gold-fx-type::before {
+    content: '';
+    position: absolute;
+    inset: -8px -14px;
+    border-radius: 999px;
+    background: radial-gradient(ellipse, rgba(91, 206, 250, .25), rgba(245, 169, 184, .18) 60%, transparent 75%);
+    filter: blur(6px);
+    z-index: -1;
+    animation: goldFxPulse 1.8s ease-in-out infinite;
+}
+
+
+/* ---------- §12 计数器彩蛋抖动（cheapDepthConflict） ---------- */
+
+.hit-counter {
+    animation: cheapDepthConflict 1.3s ease-in-out infinite;
+}
+
+
+/* ---------- §4 计数器边框闪烁 + 眼睛旋转（hitCounterBlink / hitEyeSpin） ---------- */
+
+.hit-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 3px ridge var(--trans-pink);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .85);
+    box-shadow: 0 0 16px rgba(91, 206, 250, .3);
+    animation: hitCounterBlink 1.15s steps(2) infinite, cheapDepthConflict 1.3s ease-in-out infinite;
+}
+
+.hit-counter-eye {
+    display: inline-block;
+    filter: drop-shadow(0 0 5px rgba(91, 206, 250, .8));
+    animation: hitEyeSpin 2.6s linear infinite;
+}
+
+
+/* ---------- 签名墙芯片 ---------- */
+
+.pride-chip {
+    font-size: .85rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    cursor: default;
+}
+
+
+/* ==========================================================
+   关键帧
+   ========================================================== */
+
+@keyframes contactFormPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.012);
+    }
+}
+
+@keyframes contactOrbSpin {
+    to {
+        transform: rotate(360deg) scale(1.05);
+    }
+}
+
+@keyframes contactOrbPing {
+    0% {
+        transform: scale(.92);
+        opacity: .8;
+        box-shadow: 0 0 rgba(245, 169, 184, .55);
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+        box-shadow: 0 0 0 22px rgba(245, 169, 184, 0);
+    }
+}
+
+@keyframes contactRingSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes contactSparksTwinkle {
+    0% {
+        opacity: .55;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes fireworksRainbowSpin {
+    to {
+        --spin: 360deg;
+    }
+}
+
+@keyframes fireworksRainbowPulse {
+    0%,
+    100% {
+        opacity: .85;
+        filter: saturate(1.2) brightness(1);
+    }
+    50% {
+        opacity: 1;
+        filter: saturate(1.7) brightness(1.2);
+    }
+}
+
+@keyframes fireworksWordartIn {
+    0% {
+        opacity: 0;
+        transform: skew(-10deg) rotate(-12deg) scale(.2) translateY(60px);
+    }
+    55% {
+        opacity: 1;
+        transform: skew(-4deg) rotate(4deg) scale(1.22) translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: skew(-6deg) rotate(-1.5deg) scale(1) translateY(0);
+    }
+}
+
+@keyframes fireworksWordartSpin {
+    0%,
+    100% {
+        transform: skew(-8deg) rotate(-2deg) scale(1);
+    }
+    25% {
+        transform: skew(-4deg) rotate(4deg) scale(1.08);
+    }
+    50% {
+        transform: skew(-12deg) rotate(-5deg) scale(.94);
+    }
+    75% {
+        transform: skew(-2deg) rotate(3deg) scale(1.1);
+    }
+}
+
+@keyframes fireworksFlash {
+    0% {
+        opacity: .9;
+    }
+    18% {
+        opacity: .35;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fireworksScreenShake {
+    0% {
+        transform: translate(0) rotate(0);
+    }
+    25% {
+        transform: translate(-10px, 6px) rotate(-.6deg);
+    }
+    50% {
+        transform: translate(12px, -7px) rotate(.7deg);
+    }
+    75% {
+        transform: translate(-8px, -5px) rotate(-.4deg);
+    }
+    100% {
+        transform: translate(7px, 8px) rotate(.5deg);
+    }
+}
+
+@keyframes goldFxFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 280% 50%;
+    }
+}
+
+@keyframes goldFxShine {
+    0% {
+        background-position: 160% 0;
+    }
+    100% {
+        background-position: -60% 0;
+    }
+}
+
+@keyframes goldFxFloat {
+    0%,
+    100% {
+        transform: skew(-6deg) rotate(-1.5deg) scale(1) translateY(0);
+    }
+    50% {
+        transform: skew(-4deg) rotate(1deg) scale(1.04) translateY(-6px);
+    }
+}
+
+@keyframes goldFxPulse {
+    0%,
+    100% {
+        opacity: .72;
+        filter: blur(.2px) brightness(.95);
+    }
+    50% {
+        opacity: .95;
+        filter: blur(.45px) brightness(1.15);
+    }
+}
+
+@keyframes cheapDepthConflict {
+    0%,
+    100% {
+        opacity: .92;
+        transform: translateZ(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate3d(0, -1px, 0);
+    }
+}
+
+@keyframes hitCounterBlink {
+    0%,
+    100% {
+        border-color: var(--trans-pink);
+    }
+    50% {
+        border-color: var(--trans-blue);
+    }
+}
+
+@keyframes hitEyeSpin {
+    to {
+        rotate: 360deg;
+    }
+}

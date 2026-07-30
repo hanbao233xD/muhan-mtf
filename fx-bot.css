@@ -1,0 +1,362 @@
+/* ==========================================================
+   fx-bot.css — 暖心小助手（AI 顾问）特效包（richify §10 蓝粉白化）
+   面板开合 / 消息粒子组装 / 火花 / 触底冲击 / 苹果风边框
+   ========================================================== */
+
+/* ---------- 容器与入场（supportPop） ---------- */
+.support-bot {
+    position: fixed;
+    right: 18px;
+    bottom: calc(var(--ribbon-h) + 76px);
+    z-index: 70;
+    display: grid;
+    justify-items: end;
+    gap: 12px;
+    max-width: calc(100vw - 32px);
+    animation: supportPop .5s cubic-bezier(.16, 1.2, .3, 1) .8s both;
+}
+
+/* ---------- 悬浮按钮（supportPreviewGlobe + 脉冲点） ---------- */
+.support-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    color: #fff;
+    font-size: .95rem;
+    background: linear-gradient(120deg, var(--trans-blue), var(--trans-pink));
+    box-shadow: 0 10px 28px rgba(91, 206, 250, .45);
+    transition: transform .25s cubic-bezier(.2, 1.2, .3, 1), box-shadow .25s;
+}
+.support-toggle:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 14px 34px rgba(245, 169, 184, .5); }
+.support-toggle .toggle-text { display: grid; text-align: left; line-height: 1.25; }
+.support-toggle .toggle-text small { opacity: .85; font-size: .72rem; }
+.support-pulse {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #7dffb0;
+    box-shadow: 0 0 0 0 rgba(125, 255, 176, .8);
+    animation: supportPulseDot 1.6s ease-out infinite;
+}
+.support-preview-globe {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    font-size: 15px;
+    animation: supportPreviewGlobe 2.6s linear infinite;
+}
+
+/* ---------- 聊天面板（supportPreviewPop / supportPanelExpand / supportPanelReturn / floatingGlow） ---------- */
+.support-panel {
+    position: relative;
+    width: min(340px, calc(100vw - 40px));
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--card-line);
+    box-shadow: 0 28px 72px rgba(16, 24, 39, .26);
+    overflow: hidden;
+    animation: supportPreviewPop .46s cubic-bezier(.12, 1.12, .18, 1) both,
+               floatingGlow 3.6s ease-in-out .5s infinite;
+}
+.support-panel.support-panel-expanded {
+    width: min(440px, calc(100vw - 24px));
+    animation: supportPanelExpand .62s cubic-bezier(.12, .92, .18, 1) both,
+               floatingGlow 3.6s ease-in-out .7s infinite;
+}
+.support-panel.support-panel-closing {
+    animation: supportPanelReturn .76s cubic-bezier(.18, .9, .2, 1) forwards;
+}
+
+/* ---------- 苹果风启动边框（appleAiEdgeWake / appleAiAuraWake） ---------- */
+.ai-startup-edge {
+    position: absolute;
+    inset: -3px;
+    border-radius: 26px;
+    padding: 3px;
+    background: conic-gradient(from var(--spin), var(--trans-blue), var(--trans-pink), #fff, var(--trans-blue));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    animation: appleAiEdgeWake 5.6s cubic-bezier(.16, .9, .22, 1) both,
+               borderSpin 1.18s linear infinite;
+}
+.ai-startup-aura {
+    position: absolute;
+    inset: -18px;
+    border-radius: 40px;
+    background: radial-gradient(circle, rgba(91, 206, 250, .35), rgba(245, 169, 184, .25) 55%, transparent 72%);
+    filter: blur(10px);
+    pointer-events: none;
+    opacity: 0;
+    animation: appleAiAuraWake 5.4s ease-out both;
+}
+
+/* ---------- 面板头（panelGradient） ---------- */
+.support-head {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    color: #fff;
+    background: linear-gradient(90deg, var(--trans-blue), var(--trans-pink), var(--trans-blue));
+    background-size: 300% 100%;
+    animation: panelGradient 4s ease-in-out infinite;
+}
+.head-actions { display: flex; gap: 6px; }
+.head-actions button {
+    border: none;
+    border-radius: 8px;
+    padding: 3px 9px;
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: rgba(255, 255, 255, .85);
+    cursor: pointer;
+    transition: transform .2s;
+}
+.head-actions button:hover { transform: scale(1.1); }
+
+/* ---------- 消息区 ---------- */
+.support-messages {
+    position: relative;
+    z-index: 2;
+    height: 240px;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.support-messages.bottom-bursting {
+    animation: chatScrollImpact .72s steps(5, end), chatBottomColorBurn .98s linear;
+}
+.support-messages.bottom-bursting::before {
+    content: '';
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 0;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(91, 206, 250, .5), transparent 70%);
+    animation: chatBottomPortal 1.08s cubic-bezier(.17, .84, .3, 1) forwards;
+}
+.support-messages.bottom-bursting::after {
+    content: '';
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    bottom: 0;
+    height: 46px;
+    background: linear-gradient(180deg, rgba(245, 169, 184, .6), transparent);
+    clip-path: polygon(0 100%, 12% 0, 24% 100%, 38% 8%, 52% 100%, 66% 4%, 80% 100%, 92% 10%, 100% 100%);
+    animation: chatBottomSpikes .76s cubic-bezier(.2, .7, .2, 1) forwards;
+}
+
+/* ---------- 触底冲击（chatImpactRing / chatImpactCore / chatShardLaunch） ---------- */
+.chat-bottom-impact {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    z-index: 3;
+    width: 80px;
+    height: 40px;
+    pointer-events: none;
+}
+.chat-bottom-impact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid rgba(91, 206, 250, .85);
+    animation: chatImpactRing .9s cubic-bezier(.1, .82, .24, 1) forwards;
+}
+.chat-bottom-impact::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff, var(--trans-pink) 60%, transparent 72%);
+    animation: chatImpactCore .82s ease-out forwards;
+}
+.chat-bottom-impact i {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    width: 6px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--trans-blue);
+    animation: chatShardLaunch 1.12s cubic-bezier(.16, .78, .24, 1) forwards;
+}
+.chat-bottom-impact i:nth-child(even) { background: var(--trans-pink); }
+
+/* ---------- 消息气泡 ---------- */
+.bot-msg, .user-msg { position: relative; max-width: 86%; }
+.bot-msg { align-self: flex-start; }
+.user-msg { align-self: flex-end; }
+.message-text {
+    position: relative;
+    padding: 9px 13px;
+    border-radius: 14px;
+    font-size: .9rem;
+    line-height: 1.6;
+}
+.bot-msg .message-text {
+    background: linear-gradient(180deg, #eef6ff, #fdeef3);
+    border: 1px solid rgba(91, 206, 250, .18);
+    border-bottom-left-radius: 4px;
+}
+.user-msg .message-text {
+    color: #fff;
+    background: linear-gradient(120deg, var(--trans-blue), var(--trans-pink));
+    border-bottom-right-radius: 4px;
+}
+
+/* ---------- 新机器人消息：粒子组装（botParticleBodyAssemble / botHoloSettle / botTextParticleAssemble / botDissolve*） ---------- */
+.new-bot-message {
+    animation: botParticleBodyAssemble 1.68s cubic-bezier(.16, .9, .18, 1) both,
+               botHoloSettle 2.2s ease-out both;
+}
+.new-bot-message::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 18px;
+    background: linear-gradient(115deg, transparent 30%, rgba(91, 206, 250, .35), rgba(245, 169, 184, .35), transparent 70%);
+    pointer-events: none;
+    animation: botDissolveSweep .94s cubic-bezier(.16, .88, .24, 1) both;
+}
+.new-bot-message::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    background-image: radial-gradient(circle, rgba(91, 206, 250, .8) 1.5px, transparent 2px),
+                      radial-gradient(circle, rgba(245, 169, 184, .8) 1.5px, transparent 2px);
+    background-size: 26px 26px, 34px 34px;
+    pointer-events: none;
+    animation: botDissolveParticles 1.12s cubic-bezier(.18, .84, .26, 1) both;
+}
+.new-bot-message .message-text {
+    animation: botTextParticleAssemble 1.68s cubic-bezier(.14, 1.12, .22, 1) both;
+}
+
+/* ---------- 组装粒子（botParticleAssemble / botBackgroundParticleAssemble / botParticleBackgroundWash） ---------- */
+.bot-particle, .bot-background-particle {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.bot-particle {
+    width: 6px;
+    height: 6px;
+    background: var(--trans-blue);
+    box-shadow: 0 0 8px rgba(91, 206, 250, .8);
+    animation: botParticleAssemble 1.28s cubic-bezier(.12, .9, .18, 1) var(--particle-delay, 0s) both;
+}
+.bot-particle:nth-child(even) { background: var(--trans-pink); box-shadow: 0 0 8px rgba(245, 169, 184, .8); }
+.bot-background-particle {
+    width: 9px;
+    height: 9px;
+    background: rgba(255, 255, 255, .9);
+    box-shadow: 0 0 10px rgba(245, 169, 184, .7);
+    animation: botBackgroundParticleAssemble 1.46s cubic-bezier(.12, .88, .16, 1) var(--particle-delay, 0s) both;
+}
+.bot-background-particle-cloud {
+    position: absolute;
+    inset: -6px;
+    border-radius: 18px;
+    pointer-events: none;
+    animation: botParticleBackgroundWash 1.68s cubic-bezier(.16, .9, .18, 1) both;
+}
+.bot-dissolve-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(100deg, transparent 30%, rgba(91, 206, 250, .4), rgba(245, 169, 184, .4), transparent 72%);
+    animation: botDissolveField .92s cubic-bezier(.13, .9, .25, 1) both;
+}
+
+/* ---------- 快捷问题（chipPulse） ---------- */
+.quick-questions {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 14px 4px;
+}
+.quick-questions button {
+    border: 1.5px solid var(--trans-blue);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: #fff;
+    cursor: pointer;
+    animation: chipPulse 2.5s ease-in-out infinite;
+    transition: background .25s, color .25s;
+}
+.quick-questions button:nth-child(2n) { animation-delay: .5s; border-color: var(--trans-pink); }
+.quick-questions button:hover { background: linear-gradient(90deg, rgba(91, 206, 250, .2), rgba(245, 169, 184, .2)); }
+
+/* ---------- 输入区 ---------- */
+.support-form {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 8px;
+    padding: 10px 14px 14px;
+}
+.support-form input {
+    flex: 1;
+    min-width: 0;
+    border: 1.5px solid var(--card-line);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-size: .88rem;
+    outline: none;
+    transition: border-color .25s, box-shadow .25s;
+}
+.support-form input:focus {
+    border-color: var(--trans-blue);
+    box-shadow: 0 0 0 3px rgba(91, 206, 250, .18);
+}
+.support-form .btn { padding: 9px 16px; font-size: .85rem; }
+
+/* ---------- 助手火花（advisorSparkBurst） ---------- */
+.advisor-spark-layer {
+    position: absolute;
+    inset: -60px;
+    pointer-events: none;
+    overflow: visible;
+}
+.advisor-spark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--spark-size, 3px);
+    height: var(--spark-size, 3px);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 8px var(--trans-pink), 0 0 14px var(--trans-blue);
+    animation: advisorSparkBurst var(--spark-duration, 1.2s) cubic-bezier(.2, .74, .28, 1) var(--spark-delay, 0s) forwards;
+}

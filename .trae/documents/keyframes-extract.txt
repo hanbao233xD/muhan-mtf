@@ -1,0 +1,807 @@
+@@ languageRainbowScroll
+DEF: to{background-position:300% 50%}
+
+USE: .language-switcher span :: languageRainbowScroll 2.4s linear infinite
+USE: .language-switcher select :: languageRainbowScroll 2.4s linear infinite
+@@ fireworksRainbowSpin
+DEF: to{--spin: 360deg}
+
+USE: .fireworks-rainbow-border :: fireworksRainbowSpin 1.2s linear infinite,fireworksRainbowPulse .45s steps(2) infinite
+@@ fireworksRainbowPulse
+DEF: 0%,to{opacity:.75;filter:saturate(1.4) brightness(1)}
+50%{opacity:1;filter:saturate(1.9) brightness(1.25)}
+
+USE: .fireworks-rainbow-border :: fireworksRainbowSpin 1.2s linear infinite,fireworksRainbowPulse .45s steps(2) infinite
+@@ fireworksScreenShake
+DEF: 0%{transform:translate(0) rotate(0)}
+25%{transform:translate(-10px,6px) rotate(-.6deg)}
+50%{transform:translate(12px,-7px) rotate(.7deg)}
+75%{transform:translate(-8px,-5px) rotate(-.4deg)}
+to{transform:translate(7px,8px) rotate(.5deg)}
+
+USE: html.fireworks-shake body :: fireworksScreenShake 90ms steps(2) infinite
+@@ fireworksWordartIn
+DEF: 0%{opacity:0;transform:skew(-10deg) rotate(-12deg) scale(.2) translateY(60px)}
+55%{opacity:1;transform:skew(-4deg) rotate(4deg) scale(1.22) translateY(-8px)}
+to{opacity:1;transform:skew(-6deg) rotate(-1.5deg) scale(1) translateY(0)}
+
+USE: .fireworks-wordart :: fireworksWordartIn .7s cubic-bezier(.16,1.2,.24,1) both,goldFxFloat 2.4s ease-in-out .7s infinite
+@@ goldFxFlow
+DEF: 0%{background-position:0% 50%}
+to{background-position:280% 50%}
+
+USE: .gold-fx-type-core :: goldFxFlow 2.2s linear infinite
+@@ goldFxShine
+DEF: 0%{background-position:160% 0}
+to{background-position:-60% 0}
+
+USE: .gold-fx-type-shine :: goldFxShine 1.6s linear infinite
+@@ goldFxFloat
+DEF: 0%,to{transform:skew(-6deg) rotate(-1.5deg) scale(1) translateY(0)}
+50%{transform:skew(-4deg) rotate(1deg) scale(1.04) translateY(-6px)}
+
+USE: .fireworks-wordart :: fireworksWordartIn .7s cubic-bezier(.16,1.2,.24,1) both,goldFxFloat 2.4s ease-in-out .7s infinite
+@@ goldFxPulse
+DEF: 0%,to{opacity:.72;filter:blur(.2px) brightness(.95)}
+50%{opacity:.95;filter:blur(.45px) brightness(1.15)}
+
+USE: .gold-fx-type:before :: goldFxPulse 1.8s ease-in-out infinite
+@@ fireworksWordartSpin
+DEF: 0%,to{transform:skew(-8deg) rotate(-2deg) scale(1)}
+25%{transform:skew(-4deg) rotate(4deg) scale(1.08)}
+50%{transform:skew(-12deg) rotate(-5deg) scale(.94)}
+75%{transform:skew(-2deg) rotate(3deg) scale(1.1)}
+
+USE: .advisor-jackpot-banner :: wordartGradient .9s linear infinite,advisorBannerSlam .7s cubic-bezier(.16,1.5,.3,1) both,fireworksWordartSpin 1.1s steps(3,end) .7s infinite
+@@ contactFormPulse
+DEF: 0%,to{transform:scale(1)}
+50%{transform:scale(1.012)}
+
+USE: .contact-form.is-submitting :: contactFormPulse .72s ease-in-out infinite
+@@ contactOrbSpin
+DEF: to{transform:rotate(360deg) scale(1.05)}
+
+USE: .contact-submit-orb :: contactOrbSpin 1.1s linear infinite
+@@ contactOrbPing
+DEF: 0%{transform:scale(.85);opacity:.8;box-shadow:0 0 #ffd4478c}
+to{transform:scale(2.2);opacity:0;box-shadow:0 0 0 28px #ffd44700}
+
+USE: .contact-submit-fx:after :: contactOrbPing .9s ease-out infinite
+@@ contactRingSpin
+DEF: to{transform:rotate(360deg)}
+
+USE: .contact-submit-ring,.contact-submit-ring.delay :: contactRingSpin 1.4s linear infinite
+@@ contactSparksTwinkle
+DEF: 0%{opacity:.55;transform:scale(1)}
+to{opacity:1;transform:scale(1.06)}
+
+USE: .contact-submit-sparks :: contactSparksTwinkle .48s steps(2,end) infinite
+@@ fireworksFlash
+DEF: 0%{opacity:.9}
+18%{opacity:.35}
+to{opacity:0}
+
+USE: .fireworks-flash :: fireworksFlash 10s ease-out both
+@@ pageGradient
+DEF: 0%,to{background-position:0% 50%}
+50%{background-position:100% 50%}
+
+USE: body :: pageGradient 11s ease-in-out infinite
+@@ auroraFloat
+DEF: 0%{transform:translateZ(0) scale(1)}
+to{transform:translate3d(12vw,-8vh,0) scale(1.18)}
+
+USE: .aurora :: auroraFloat 13s ease-in-out infinite alternate
+@@ gridDrift
+DEF: 0%{background-position:0 0}
+to{background-position:52px 52px}
+
+USE: .laser-grid :: gridDrift 20s linear infinite
+@@ scanMove
+DEF: 0%{transform:translateY(-16px)}
+to{transform:translateY(16px)}
+
+USE: .scanlines :: scanMove 5s linear infinite
+@@ sparklePop
+DEF: 0%,to{opacity:.12;transform:translateY(0) scale(.7)}
+45%{opacity:.95;transform:translateY(-18px) scale(1.2)}
+
+USE: .sparkle-field i :: sparklePop 3.4s ease-in-out infinite
+@@ codeRain
+DEF: 0%{transform:translateY(-24%);opacity:.55}
+to{transform:translateY(38%);opacity:.95}
+
+USE: .code-rain :: codeRain 7.5s linear infinite
+@@ codeRainPulse
+DEF: 0%,to{filter:brightness(1);text-shadow:0 0 8px rgba(0,255,120,.9),0 0 18px rgba(57,255,106,.5)}
+50%{filter:brightness(1.45);text-shadow:0 0 14px rgba(0,255,160,1),0 0 32px rgba(0,255,231,.85),0 0 48px rgba(255,212,71,.45)}
+
+USE: .code-rain span :: codeRainPulse 1.8s ease-in-out infinite
+@@ marqueeMove
+DEF: 0%{transform:translate(0)}
+to{transform:translate(-50%)}
+
+USE: .marquee-ribbon .marquee-copy :: marqueeMove 16s linear infinite
+@@ marqueeColorShift
+DEF: 0%{background-position:0% 50%;filter:hue-rotate(0deg) saturate(1.2)}
+to{background-position:100% 50%;filter:hue-rotate(360deg) saturate(1.7)}
+
+USE: .marquee-ribbon :: marqueeColorShift 2.4s linear infinite
+@@ diamondDangle
+DEF: 0%{transform:translateY(0) rotate(-7deg) scale(.92)}
+to{transform:translateY(-10px) rotate(7deg) scale(1.1)}
+
+USE: .marquee-diamond-3d :: diamondDangle 1.05s ease-in-out infinite alternate,diamondPanic .42s steps(2) infinite
+@@ diamondPanic
+DEF: 0%,to{filter:drop-shadow(0 0 13px rgba(255,212,71,.95)) drop-shadow(0 0 26px rgba(0,255,231,.76)) hue-rotate(0deg)}
+50%{filter:drop-shadow(0 0 22px rgba(255,79,216,.92)) drop-shadow(0 0 38px rgba(255,212,71,.92)) hue-rotate(45deg)}
+
+USE: .marquee-diamond-3d :: diamondDangle 1.05s ease-in-out infinite alternate,diamondPanic .42s steps(2) infinite
+@@ richPulse
+DEF: 0%,to{transform:scale(1)}
+50%{transform:scale(1.08)}
+
+USE: .brand-mark :: borderSpin 3.5s linear infinite,richPulse 2.2s ease-in-out infinite
+@@ cheapDepthConflict
+DEF: 0%,to{opacity:.92;transform:translateZ(0)}
+50%{opacity:1;transform:translate3d(0,-1px,0)}
+
+USE: <无直接引用>
+@@ sparkleNoiseDrift
+DEF: 0%,to{opacity:.28;transform:translateZ(0) scale(1)}
+50%{opacity:.42;transform:translate3d(8px,-6px,0) scale(1.02)}
+
+USE: .hero-bubble-burst:after :: sparkleNoiseDrift 6s ease-in-out infinite
+@@ globalRefraction
+DEF: 0%{transform:translate3d(-12%,0,0) skew(-8deg);background-position:0% 50%}
+to{transform:translate3d(12%,0,0) skew(8deg);background-position:240% 50%}
+
+USE: body:before :: globalRefraction 8.5s linear infinite
+@@ technoBreathing
+DEF: 0%,to{opacity:.18;transform:scale(1)}
+50%{opacity:.3;transform:scale(1.015)}
+
+USE: .flashy-effects:before :: technoBreathing 7s ease-in-out infinite
+@@ ambientSheetDrift
+DEF: 0%{transform:translate3d(-2%,-1%,0)}
+to{transform:translate3d(2%,1%,0)}
+
+USE: .flashy-effects:after :: ambientSheetDrift 18s ease-in-out infinite alternate
+@@ headerLiquid
+DEF: 0%,to{transform:translateY(0) scaleX(1);filter:saturate(1.1)}
+50%{transform:translateY(1px) scaleX(1.006);filter:saturate(1.42)}
+
+USE: .site-header :: headerLiquid 3.2s ease-in-out infinite
+@@ liquidSweep
+DEF: 0%{transform:translate(-120%) rotate(18deg)}
+to{transform:translate(260%) rotate(18deg)}
+
+USE: .site-header:after :: liquidSweep 2.6s linear infinite
+USE: .nav-list a:after :: liquidSweep 2.2s linear infinite
+@@ navMarquee
+DEF: 0%{transform:translateZ(0)}
+to{transform:translate3d(-50%,0,0)}
+
+USE: .nav-list.is-marquee .nav-list-track :: navMarquee var(--nav-marquee-duration, 36s) linear infinite
+@@ navLiquidFloat
+DEF: 0%,to{transform:translateY(0) rotateX(0) rotateY(0);filter:saturate(1.1)}
+50%{transform:translateY(-3px) rotateX(7deg) rotateY(-4deg);filter:saturate(1.55)}
+
+USE: .nav-list a :: navLiquidFloat 2.7s ease-in-out infinite,navChromatic 1.9s linear infinite
+USE: .language-switcher :: borderSpin 3.1s linear infinite,navLiquidFloat 2.5s ease-in-out infinite
+@@ navChromatic
+DEF: 0%,to{text-shadow:0 0 0 rgba(255,79,216,0),0 0 0 rgba(0,255,231,0)}
+50%{text-shadow:1px 0 rgba(255,79,216,.36),-1px 0 rgba(0,255,231,.36)}
+
+USE: .nav-list a :: navLiquidFloat 2.7s ease-in-out infinite,navChromatic 1.9s linear infinite
+@@ glassCardWobble
+DEF: 0%,to{filter:saturate(1) hue-rotate(0deg)}
+50%{filter:saturate(1.28) hue-rotate(5deg)}
+
+USE: .requirement-strip :: dashedGlow 1.2s ease-in-out infinite alternate,glassCardWobble 3.4s ease-in-out infinite
+USE: .big-quote,.anti-pattern,.callout,.contact-card,.contact-form,.prompt-window,.hallucination-card,.disclaimer-wall,.hallucination-lab,.pipeline-strip article :: glassCardWobble 6.4s ease-in-out infinite
+USE: .feature-card,.product-card,.case-card,.price-card,.hallucination-card,.news-list article,.jobs-list article,.timeline-list article,.pipeline-strip article :: glassCardWobble 5.4s ease-in-out infinite
+USE: .three-showcase :: glassCardWobble 5.2s ease-in-out infinite
+USE: .price-card.highlighted :: borderSpin 2.6s linear infinite,glassCardWobble 3s ease-in-out infinite
+USE: .pricing-domain-link :: borderSpin 2.2s linear infinite,glassCardWobble 2.8s ease-in-out infinite
+USE: .prompt-window :: glassCardWobble 4.8s ease-in-out infinite
+USE: .rationale-card :: glassCardWobble 5.2s ease-in-out infinite
+@@ metricPanic
+DEF: 0%,to{transform:translateY(0) scale(1)}
+50%{transform:translateY(-4px) scale(1.018)}
+
+USE: .metric-card :: metricPanic 2.4s ease-in-out infinite
+@@ textGlitchGlow
+DEF: 0%,to{filter:none;text-shadow:0 0 12px rgba(255,212,71,.12)}
+48%{filter:none}
+52%{filter:hue-rotate(14deg);text-shadow:1px 0 rgba(255,79,216,.34),-1px 0 rgba(0,255,231,.34),0 0 18px rgba(255,212,71,.28)}
+
+USE: :where(h1,h2,h3,h4,p,a,button,span,strong,small,em,label,li,time,option,figcaption,blockquote):hover :: rainbowTextHover .72s linear infinite,textGlitchGlow .52s steps(2) infinite
+USE: .metric-card strong :: textGlitchGlow 2.2s ease-in-out infinite
+USE: .feature-card h3,.product-card h3,.case-card h3,.price-card strong,.hallucination-card h3,.rationale-card h3,.pipeline-strip h3,.three-copy h3,.contact-card h3 :: textGlitchGlow 3.1s ease-in-out infinite,wordartMiniPulse 1.7s steps(2,end) infinite
+@@ heroChromaticPulse
+DEF: 0%,to{filter:drop-shadow(0 0 0 rgba(0,255,231,0))}
+50%{filter:drop-shadow(5px 0 0 rgba(255,79,216,.16)) drop-shadow(-5px 0 0 rgba(0,255,231,.14))}
+
+USE: <无直接引用>
+@@ heroBorderGlow
+DEF: 0%,to{opacity:.45;transform:scale(1)}
+50%{opacity:.68;transform:scale(1.015)}
+
+USE: .hero-visual:before :: heroBorderGlow 5.5s ease-in-out infinite
+@@ bubbleMegaPop
+DEF: 0%{opacity:0;transform:translate(-50%,26px) rotate(var(--bubble-tilt)) scale(.45)}
+5%{opacity:1;transform:translate(-50%,-14px) rotate(calc(var(--bubble-tilt) * -.35)) scale(1.12,.9)}
+11%{transform:translate(-50%) rotate(calc(var(--bubble-tilt) * .18)) scale(.96,1.06)}
+18%{transform:translate(-50%,-8px) rotate(calc(var(--bubble-tilt) * .12)) scale(1.03)}
+84%{opacity:1;transform:translate(calc(-50% + var(--bubble-drift-soft)),-26px) rotate(0) scale(1)}
+88%{opacity:1;transform:translate(calc(-50% + var(--bubble-drift-soft)),-32px) rotate(calc(var(--bubble-tilt) * .35)) scale(1.08)}
+93%{opacity:.72;transform:translate(calc(-50% + var(--bubble-drift-mid)),-56px) rotate(var(--bubble-tilt)) scale(1.2,.72)}
+to{opacity:0;transform:translate(calc(-50% + var(--bubble-drift)),-126px) rotate(var(--bubble-tilt)) scale(1.62,.18)}
+
+USE: .hero-bubble :: bubbleMegaPop var(--bubble-life) cubic-bezier(.18,1.12,.28,1) var(--bubble-delay) infinite both,bubbleChromatic 1.8s ease-in-out infinite
+@@ bubbleShardBurst
+DEF: 0%,84%{opacity:0;transform:translate(-50%,-50%) rotate(var(--shard-angle)) scale(0)}
+89%{opacity:.98;transform:translate(-50%,-50%) rotate(var(--shard-angle)) scale(.85,1.2)}
+95%{opacity:1;transform:translate(-50%,-50%) rotate(var(--shard-angle)) translateY(calc(var(--shard-distance) * -1)) rotate(120deg) scale(1.2,.72)}
+to{opacity:0;transform:translate(-50%,-50%) rotate(var(--shard-angle)) translateY(calc(var(--shard-distance) * -2.4)) rotate(300deg) scale(.12,1.9)}
+
+USE: .bubble-shard :: bubbleShardBurst var(--bubble-life) cubic-bezier(.16,1.1,.2,1) var(--bubble-delay) infinite both
+@@ bubbleChromatic
+DEF: 0%,to{opacity:.94}
+50%{opacity:1}
+
+USE: .hero-bubble :: bubbleMegaPop var(--bubble-life) cubic-bezier(.18,1.12,.28,1) var(--bubble-delay) infinite both,bubbleChromatic 1.8s ease-in-out infinite
+@@ bubbleShine
+DEF: 0%{transform:translate(-80%) rotate(22deg)}
+to{transform:translate(320%) rotate(22deg)}
+
+USE: .hero-bubble:after :: bubbleShine 1.3s linear infinite
+@@ bubbleGlassSweep
+DEF: 0%{transform:translate3d(-18%,0,0) skew(-10deg)}
+to{transform:translate3d(18%,0,0) skew(10deg)}
+
+USE: .hero-bubble-burst:before :: bubbleGlassSweep 3.4s linear infinite
+@@ trailFade
+DEF: 0%{opacity:.95;transform:translate(-50%,-50%) scale(1)}
+to{opacity:0;transform:translate(-50%,-50%) scale(3.4) rotate(45deg)}
+
+USE: .cursor-tech-dot :: trailFade .76s ease-out forwards
+@@ lightToastPop
+DEF: 0%{transform:translate(-50%,18px) scale(.9);filter:saturate(1)}
+12%{transform:translate(-50%) scale(1.08);filter:saturate(1.5)}
+24%{transform:translate(-50%) scale(1)}
+82%{transform:translate(-50%) scale(1)}
+to{transform:translate(-50%,-10px) scale(.96);filter:saturate(1)}
+
+USE: .light-toast.active :: lightToastPop 2.6s ease forwards
+@@ liquidCursorBreath
+DEF: 0%,to{transform:scale(1);border-radius:999px}
+45%{transform:scale(1.045);border-radius:999px}
+70%{transform:scale(.96);border-radius:999px}
+
+USE: .liquid-cursor-fill :: liquidCursorBreath 1.8s ease-in-out infinite
+USE: .liquid-glass-cursor.cursor-snap-pop .liquid-cursor-fill :: liquidCursorBreath 1.8s ease-in-out infinite,liquidCursorSnap .52s cubic-bezier(.16,1.52,.22,1) both
+USE: .liquid-glass-cursor.cursor-click-pop .liquid-cursor-fill :: liquidCursorBreath 1.8s ease-in-out infinite,liquidCursorClick .43s cubic-bezier(.16,1.42,.24,1) both
+@@ liquidCursorMagnetBreath
+DEF: 0%,to{transform:scale(1);filter:brightness(1) saturate(1.55)}
+42%{transform:scale(1.025,.985);filter:brightness(1.18) saturate(2.05) hue-rotate(14deg)}
+72%{transform:scale(.99,1.018);filter:brightness(1.08) saturate(1.82) hue-rotate(-8deg)}
+
+USE: .liquid-glass-cursor.magnetized .liquid-cursor-fill :: liquidCursorMagnetBreath 1.12s ease-in-out infinite
+USE: .liquid-glass-cursor.magnetized.cursor-snap-pop .liquid-cursor-fill :: liquidCursorMagnetBreath 1.12s ease-in-out infinite,liquidCursorSnap .52s cubic-bezier(.16,1.52,.22,1) both
+@@ liquidCursorLens
+DEF: 0%{--spin: 0deg;transform:rotate(0) scale(.92)}
+to{--spin: 360deg;transform:rotate(360deg) scale(.92)}
+
+USE: .liquid-cursor-lens :: liquidCursorLens 1.2s linear infinite
+@@ liquidCursorSpark
+DEF: 0%,to{transform:rotate(0) scale(1);opacity:.48}
+50%{transform:rotate(18deg) scale(1.14);opacity:.9}
+
+USE: .liquid-cursor-spark :: liquidCursorSpark .86s ease-in-out infinite
+@@ liquidCursorSnap
+DEF: 0%{transform:scale(.72,1.34);filter:brightness(1.5) saturate(2.2)}
+34%{transform:scale(1.18,.78);filter:brightness(1.24) saturate(1.9)}
+58%{transform:scale(.9,1.12)}
+to{transform:scale(1);filter:none}
+
+USE: .liquid-glass-cursor.cursor-snap-pop .liquid-cursor-fill :: liquidCursorBreath 1.8s ease-in-out infinite,liquidCursorSnap .52s cubic-bezier(.16,1.52,.22,1) both
+USE: .liquid-glass-cursor.magnetized.cursor-snap-pop .liquid-cursor-fill :: liquidCursorMagnetBreath 1.12s ease-in-out infinite,liquidCursorSnap .52s cubic-bezier(.16,1.52,.22,1) both
+@@ liquidCursorClick
+DEF: 0%{transform:scale(1)}
+28%{transform:scale(.72,1.34);filter:brightness(1.7) saturate(2.6) hue-rotate(28deg)}
+62%{transform:scale(1.28,.76)}
+to{transform:scale(1);filter:none}
+
+USE: .liquid-glass-cursor.cursor-click-pop .liquid-cursor-fill :: liquidCursorBreath 1.8s ease-in-out infinite,liquidCursorClick .43s cubic-bezier(.16,1.42,.24,1) both
+@@ magnetEdgeFlash
+DEF: 0%{opacity:0;transform:scale(.58,.72);filter:blur(10px) brightness(1.8) saturate(2.4)}
+18%{opacity:1;transform:scale(1.1,.86);filter:blur(0) brightness(1.32) saturate(2.1)}
+44%{opacity:.92;transform:scale(.96,1.08)}
+to{opacity:0;transform:scale(1.28,1.34);filter:blur(8px) brightness(1.1) saturate(1.2)}
+
+USE: .cursor-magnet-burst:before :: magnetEdgeFlash .82s cubic-bezier(.14,.94,.18,1) forwards
+@@ magnetEdgeOrbit
+DEF: 0%{--spin: 0deg;opacity:0;transform:scale(.76) rotate(0);filter:blur(6px)}
+22%{opacity:.9;transform:scale(1.02) rotate(24deg);filter:blur(0)}
+to{--spin: 360deg;opacity:0;transform:scale(1.42) rotate(148deg);filter:blur(7px)}
+
+USE: .cursor-magnet-burst:after :: magnetEdgeOrbit .68s ease-out forwards
+@@ magnetParticlePop
+DEF: 0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--magnet-angle)) translate(0) scale(.12)}
+20%{opacity:1;transform:translate(-50%,-50%) rotate(var(--magnet-angle)) translate(calc(var(--magnet-distance) * .34)) scale(1.16,.74)}
+72%{opacity:.86;transform:translate(-50%,-50%) rotate(var(--magnet-angle)) translate(var(--magnet-distance)) scale(.9,1.12)}
+to{opacity:0;transform:translate(-50%,-50%) rotate(var(--magnet-angle)) translate(calc(var(--magnet-distance) * 1.46)) scale(.12);filter:blur(2px)}
+
+USE: .cursor-magnet-burst i :: magnetParticlePop .76s cubic-bezier(.14,.86,.22,1) var(--magnet-delay) forwards
+@@ magnetButtonJelly
+DEF: 0%{transform:translateZ(0) scale(1)}
+28%{transform:translate3d(0,-2px,0) scale(1.08,.88)}
+54%{transform:translate3d(0,1px,0) scale(.96,1.1)}
+78%{transform:translate3d(0,-1px,0) scale(1.03,.98)}
+to{transform:translateZ(0) scale(1)}
+
+USE: .cursor-magnet-active :: magnetButtonJelly .62s cubic-bezier(.16,1.42,.24,1) both,magnetButtonAura .88s linear infinite
+@@ magnetInnerJelly
+DEF: 0%{transform:translate(0) scale(1)}
+30%{transform:translate(3px,-2px) scale(1.1,.86) rotate(1.5deg)}
+58%{transform:translate(-2px,1px) scale(.94,1.1) rotate(-1deg)}
+to{transform:translate(0) scale(1)}
+
+USE: .cursor-magnet-active .new-generation-visual :: newGenerationBounce .52s steps(5,end) infinite,goldenLogoWheel .72s linear infinite,magnetInnerJelly .62s cubic-bezier(.16,1.42,.24,1) both,magnetButtonAura .88s linear infinite
+@@ clickShockRing
+DEF: 0%{opacity:.95;transform:translate(-50%,-50%) scale(.18) rotate(0);filter:blur(0) saturate(2.2)}
+58%{opacity:.74;transform:translate(-50%,-50%) scale(2.9) rotate(16deg);filter:blur(.6px) saturate(1.7)}
+to{opacity:0;transform:translate(-50%,-50%) scale(4.4) rotate(42deg);filter:blur(3px) saturate(1)}
+
+USE: .global-click-burst:before :: clickShockRing .76s cubic-bezier(.12,.88,.2,1) forwards
+@@ clickCorePop
+DEF: 0%{opacity:1;transform:translate(-50%,-50%) scale(.2)}
+38%{opacity:.94;transform:translate(-50%,-50%) scale(1.8,.74) rotate(28deg)}
+to{opacity:0;transform:translate(-50%,-50%) scale(.1) rotate(90deg)}
+
+USE: .global-click-burst:after :: clickCorePop .52s ease-out forwards
+@@ clickParticleBurst
+DEF: 0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--click-angle)) translate(0) scale(.22) rotate(0);filter:blur(1px)}
+16%{opacity:1;transform:translate(-50%,-50%) rotate(var(--click-angle)) translate(calc(var(--click-distance) * .22)) scale(1.2,.72) rotate(calc(var(--click-spin) * .18));filter:blur(0)}
+72%{opacity:.92;transform:translate(-50%,-50%) rotate(var(--click-angle)) translate(var(--click-distance)) scale(.84,1.18) rotate(calc(var(--click-spin) * .72))}
+to{opacity:0;transform:translate(-50%,-50%) rotate(var(--click-angle)) translate(calc(var(--click-distance) * 1.42)) scale(.12) rotate(var(--click-spin));filter:blur(3px)}
+
+USE: .global-click-burst i :: clickParticleBurst .88s cubic-bezier(.12,.86,.18,1) var(--click-delay) forwards
+@@ buttonGlow
+DEF: 0%,to{filter:saturate(1)}
+50%{filter:saturate(1.28) brightness(1.06)}
+
+USE: .new-generation-visual :: buttonGlow 2.8s ease-in-out infinite
+@@ magnetButtonAura
+DEF: 0%{--spin: 0deg;filter:saturate(1.45) brightness(1.08) hue-rotate(0deg)}
+50%{--spin: 180deg;filter:saturate(2.05) brightness(1.2) hue-rotate(22deg)}
+to{--spin: 360deg;filter:saturate(1.45) brightness(1.08) hue-rotate(0deg)}
+
+USE: .cursor-magnet-active :: magnetButtonJelly .62s cubic-bezier(.16,1.42,.24,1) both,magnetButtonAura .88s linear infinite
+USE: .cursor-magnet-active .new-generation-visual :: newGenerationBounce .52s steps(5,end) infinite,goldenLogoWheel .72s linear infinite,magnetInnerJelly .62s cubic-bezier(.16,1.42,.24,1) both,magnetButtonAura .88s linear infinite
+@@ goldenLogoWheel
+DEF: 0%{--spin: 0deg;filter:saturate(1.25) brightness(1.02)}
+50%{--spin: 180deg;filter:saturate(1.9) brightness(1.16) contrast(1.12)}
+to{--spin: 360deg;filter:saturate(1.35) brightness(1.04)}
+
+USE: .cursor-magnet-active .new-generation-visual :: newGenerationBounce .52s steps(5,end) infinite,goldenLogoWheel .72s linear infinite,magnetInnerJelly .62s cubic-bezier(.16,1.42,.24,1) both,magnetButtonAura .88s linear infinite
+USE: .new-generation-hitbox:hover .new-generation-visual,.new-generation-hitbox:focus-visible .new-generation-visual,.header-cta:hover,.hero-actions a:hover,.feature-card a:hover,.product-card a:hover,.case-card a:hover,.news-list a:hover,.jobs-list a:hover,.callout a:hover :: newGenerationBounce .64s steps(5,end) infinite,goldenLogoWheel .92s linear infinite
+USE: .contact-form.is-submitting:before :: goldenLogoWheel .9s linear infinite
+@@ goldenLogoHalo
+DEF: 0%{transform:rotate(0) scale(1.08)}
+to{transform:rotate(360deg) scale(1.08)}
+
+USE: .new-generation-hitbox:hover .new-generation-visual:after,.new-generation-hitbox:focus-visible .new-generation-visual:after :: goldenLogoHalo .78s linear infinite
+@@ newGenerationBounce
+DEF: 0%{transform:translate(0) rotate(0) scale(1)}
+16%{transform:translate(18px,-11px) rotate(7deg) scaleX(1.18) scaleY(.82)}
+32%{transform:translate(-15px,12px) rotate(-9deg) scaleX(.86) scaleY(1.24)}
+48%{transform:translate(24px,7px) rotate(12deg) scaleX(1.28) scaleY(.78)}
+64%{transform:translate(-22px,-10px) rotate(-13deg) scaleX(.8) scaleY(1.3)}
+82%{transform:translate(8px,16px) rotate(5deg) scaleX(1.12) scaleY(.9)}
+to{transform:translate(0) rotate(0) scale(1)}
+
+USE: .cursor-magnet-active .new-generation-visual :: newGenerationBounce .52s steps(5,end) infinite,goldenLogoWheel .72s linear infinite,magnetInnerJelly .62s cubic-bezier(.16,1.42,.24,1) both,magnetButtonAura .88s linear infinite
+USE: .new-generation-hitbox:hover .new-generation-visual,.new-generation-hitbox:focus-visible .new-generation-visual,.header-cta:hover,.hero-actions a:hover,.feature-card a:hover,.product-card a:hover,.case-card a:hover,.news-list a:hover,.jobs-list a:hover,.callout a:hover :: newGenerationBounce .64s steps(5,end) infinite,goldenLogoWheel .92s linear infinite
+@@ shineSweep
+DEF: 0%,48%{left:-45%}
+70%,to{left:118%}
+
+USE: .new-generation-hitbox:after,.header-cta:after,.hero-actions a:after,.feature-card a:after,.product-card a:after,.case-card a:after,.news-list a:after,.jobs-list a:after,.callout a:after :: shineSweep 3.6s ease-in-out infinite
+USE: .new-generation-visual:after :: shineSweep 2.1s ease-in-out infinite
+USE: .rationale-card:before :: shineSweep 4.8s linear infinite
+USE: .contact-submit-beam :: shineSweep .85s ease-in-out infinite
+@@ dashedGlow
+DEF: 0%{box-shadow:0 12px 28px #1720330f,0 0 #2257ff00}
+to{box-shadow:0 12px 28px #1720330f,0 0 26px #2257ff3d}
+
+USE: .requirement-strip :: dashedGlow 1.2s ease-in-out infinite alternate,glassCardWobble 3.4s ease-in-out infinite
+USE: .three-loading :: dashedGlow 1.8s ease-in-out infinite alternate
+@@ textGradient
+DEF: 0%{background-position:0% 50%}
+to{background-position:300% 50%}
+
+USE: .brand strong :: textGradient 4s linear infinite
+USE: h1 :: textGradient 5.5s linear infinite
+@@ wordartGradient
+DEF: 0%{background-position:50% 0%;filter:drop-shadow(0 0 12px rgba(255,212,71,.42)) hue-rotate(0deg)}
+50%{background-position:50% 100%;filter:drop-shadow(0 0 22px rgba(0,255,231,.58)) hue-rotate(24deg)}
+to{background-position:50% 0%;filter:drop-shadow(0 0 14px rgba(255,79,216,.48)) hue-rotate(0deg)}
+
+USE: .ppt-wordart :: wordartGradient 2.6s linear infinite,wordartWobble 1.8s steps(2,end) infinite
+USE: .ppt-wordart:not(.hero-wordart) :: wordartGradient 2.6s linear infinite
+USE: .compact-wordart :: wordartGradient 2.6s linear infinite,wordartCompactWobble 1.8s steps(2,end) infinite
+USE: .advisor-jackpot-banner :: wordartGradient .9s linear infinite,advisorBannerSlam .7s cubic-bezier(.16,1.5,.3,1) both,fireworksWordartSpin 1.1s steps(3,end) .7s infinite
+@@ wordartWobble
+DEF: 0%,to{transform:skew(-7deg) rotate(-1.2deg) translateZ(0)}
+50%{transform:skew(-9deg) rotate(.6deg) translate3d(2px,-1px,0)}
+
+USE: .ppt-wordart :: wordartGradient 2.6s linear infinite,wordartWobble 1.8s steps(2,end) infinite
+@@ wordartCompactWobble
+DEF: 0%,to{transform:skew(-5deg) rotate(-.8deg) translateZ(0)}
+50%{transform:skew(-6deg) rotate(.4deg) translate3d(1px,-1px,0)}
+
+USE: .compact-wordart :: wordartGradient 2.6s linear infinite,wordartCompactWobble 1.8s steps(2,end) infinite
+@@ wordartShine
+DEF: 0%{background-position:0 0,-160% 0}
+to{background-position:0 0,180% 0}
+
+USE: .ppt-wordart:after :: wordartShine 1.35s linear infinite
+@@ wordartMiniPulse
+DEF: 0%,to{filter:hue-rotate(0deg) saturate(1.1)}
+50%{filter:hue-rotate(18deg) saturate(1.55)}
+
+USE: .feature-card h3,.product-card h3,.case-card h3,.price-card strong,.hallucination-card h3,.rationale-card h3,.pipeline-strip h3,.three-copy h3,.contact-card h3 :: textGlitchGlow 3.1s ease-in-out infinite,wordartMiniPulse 1.7s steps(2,end) infinite
+@@ rainbowTextHover
+DEF: 0%{background-position:0% 50%,0% 50%;filter:hue-rotate(0deg) saturate(1.4) contrast(1)}
+50%{background-position:140% 50%,90% 50%;filter:hue-rotate(110deg) saturate(2.8) contrast(1.22)}
+to{background-position:280% 50%,180% 50%;filter:hue-rotate(360deg) saturate(1.8) contrast(1.08)}
+
+USE: :where(h1,h2,h3,h4,p,a,button,span,strong,small,em,label,li,time,option,figcaption,blockquote):hover :: rainbowTextHover .72s linear infinite,textGlitchGlow .52s steps(2) infinite
+@@ borderSpin
+DEF: to{--spin: 360deg}
+
+USE: .brand-mark :: borderSpin 3.5s linear infinite,richPulse 2.2s ease-in-out infinite
+USE: .language-switcher :: borderSpin 3.1s linear infinite,navLiquidFloat 2.5s ease-in-out infinite
+USE: .feature-card:before,.product-card:before,.case-card:before,.price-card:before,.metric-card:before,.prompt-card:before,.big-quote:before,.anti-pattern:before,.callout:before,.contact-card:before,.contact-form:before,.prompt-window:before,.hallucination-card:before,.disclaimer-wall:before,.hallucination-lab:before,.pipeline-strip article:before,.news-list article:before,.jobs-list article:before,.timeline-list article:before,.support-panel:before :: borderSpin 5s linear infinite
+USE: .price-card.highlighted :: borderSpin 2.6s linear infinite,glassCardWobble 3s ease-in-out infinite
+USE: .pricing-domain-link :: borderSpin 2.2s linear infinite,glassCardWobble 2.8s ease-in-out infinite
+USE: .ai-startup-edge :: appleAiEdgeWake 5.6s cubic-bezier(.16,.9,.22,1) both,borderSpin 1.18s linear infinite
+USE: .support-messages.bottom-bursting:before :: chatBottomPortal 1.08s cubic-bezier(.17,.84,.3,1) forwards,borderSpin .68s linear infinite
+USE: .chat-bottom-impact:after :: chatImpactCore .82s ease-out forwards,borderSpin .36s linear infinite
+@@ heroImageFrameRotate
+DEF: to{transform:rotate(360deg) scale(1.04)}
+
+USE: .hero-visual:after :: heroImageFrameRotate 1.18s linear infinite
+@@ panelShimmer
+DEF: 0%,52%{transform:translate(-90%) rotate(12deg);opacity:0}
+65%{opacity:.8}
+to{transform:translate(120%) rotate(12deg);opacity:0}
+
+USE: .feature-card:after,.product-card:after,.case-card:after,.price-card:after,.metric-card:after,.prompt-card:after,.big-quote:after,.anti-pattern:after,.callout:after,.contact-card:after,.contact-form:after,.prompt-window:after,.hallucination-card:after,.disclaimer-wall:after,.hallucination-lab:after,.pipeline-strip article:after,.news-list article:after,.jobs-list article:after,.timeline-list article:after,.support-panel:after :: panelShimmer 6s ease-in-out infinite
+@@ visualFloat
+DEF: 0%,to{transform:translateY(0) rotate(0)}
+50%{transform:translateY(-10px) rotate(.4deg)}
+
+USE: .hero-visual :: visualFloat 4.2s ease-in-out infinite
+@@ imageSaturate
+DEF: 0%{filter:saturate(1) contrast(1)}
+to{filter:saturate(1.22) contrast(1.05)}
+
+USE: <无直接引用>
+@@ panelBob
+DEF: 0%,to{transform:translateY(0)}
+50%{transform:translateY(-9px)}
+
+USE: <无直接引用>
+@@ supportPop
+DEF: 0%{transform:translateY(12px) scale(.96);opacity:0}
+to{transform:translateY(0) scale(1);opacity:1}
+
+USE: <无直接引用>
+@@ supportPreviewPop
+DEF: 0%{opacity:0;filter:blur(12px) brightness(2.1) saturate(2.8);clip-path:circle(0 at var(--support-origin-x) var(--support-origin-y))}
+45%{opacity:1;filter:blur(1px) brightness(1.22) saturate(1.8);clip-path:circle(145% at var(--support-origin-x) var(--support-origin-y))}
+to{opacity:1;filter:none;clip-path:circle(145% at var(--support-origin-x) var(--support-origin-y))}
+
+USE: .support-panel :: supportPreviewPop .46s cubic-bezier(.12,1.12,.18,1) both,floatingGlow 3.6s ease-in-out infinite
+@@ supportPanelExpand
+DEF: 0%{opacity:.92;filter:blur(7px) brightness(1.7) saturate(2.2);clip-path:inset(28% 12% 28% 12% round 22px)}
+36%{opacity:1;filter:blur(1px) brightness(1.22) saturate(1.7);clip-path:inset(0 round 22px)}
+to{opacity:1;filter:none;clip-path:inset(0 round 22px)}
+
+USE: .support-panel-expanded :: supportPanelExpand .62s cubic-bezier(.12,.92,.18,1) both,floatingGlow 3.6s ease-in-out infinite
+@@ supportPanelReturn
+DEF: 0%{opacity:1;transform:translateZ(0) scale(1) rotateX(0) rotate(0);filter:none;clip-path:circle(145% at var(--support-origin-x) var(--support-origin-y))}
+22%{opacity:1;transform:translate3d(0,-8px,0) scale(.98,.88) rotateX(10deg) rotate(-4deg);filter:brightness(1.42) saturate(2.4)}
+54%{opacity:.88;transform:translate3d(0,6px,0) scale(.42,.34) rotateX(64deg) rotate(18deg);filter:blur(4px) brightness(2.1) saturate(3.4) hue-rotate(84deg);clip-path:circle(42% at var(--support-origin-x) var(--support-origin-y))}
+78%{opacity:.62;transform:translate3d(0,10px,0) scale(.16,.08) rotateX(82deg) rotate(-32deg);filter:blur(9px) brightness(2.8) saturate(4);clip-path:polygon(50% 0,58% 40%,100% 12%,66% 52%,100% 88%,58% 62%,50% 100%,42% 62%,0 88%,34% 52%,0 12%,42% 40%)}
+to{opacity:0;transform:translate3d(0,14px,0) scale(.02) rotateX(90deg) rotate(60deg);filter:blur(16px) brightness(3) saturate(4);clip-path:circle(0 at var(--support-origin-x) var(--support-origin-y))}
+
+USE: .support-panel-closing :: supportPanelReturn .76s cubic-bezier(.18,.9,.2,1) forwards
+@@ supportPreviewGlobe
+DEF: to{--spin: 360deg;transform:rotate(360deg)}
+
+USE: .support-preview-globe :: supportPreviewGlobe 2.6s linear infinite
+@@ appleAiEdgeWake
+DEF: 0%{opacity:0;padding:12px;transform:scale(.966);filter:drop-shadow(0 0 0 rgba(255,120,214,0)) drop-shadow(0 0 0 rgba(58,181,255,0))}
+8%{opacity:1;padding:8px;transform:scale(1.012)}
+18%{opacity:1;padding:6px;filter:drop-shadow(-12px 0 34px rgba(255,72,206,1)) drop-shadow(12px 0 38px rgba(26,179,255,.94)) drop-shadow(0 12px 30px rgba(255,208,66,.72))}
+42%{opacity:1;padding:5px;transform:scale(1.018);filter:drop-shadow(0 -12px 36px rgba(118,76,255,.96)) drop-shadow(16px 10px 40px rgba(98,255,213,.84)) drop-shadow(-14px 12px 34px rgba(255,208,66,.72))}
+72%{opacity:.9;padding:4px;transform:scale(1.01)}
+88%{opacity:.72;padding:3px;transform:scale(1.004)}
+to{opacity:0;padding:2px;transform:scale(1);filter:drop-shadow(0 0 0 rgba(255,120,214,0)) drop-shadow(0 0 0 rgba(58,181,255,0))}
+
+USE: .ai-startup-edge :: appleAiEdgeWake 5.6s cubic-bezier(.16,.9,.22,1) both,borderSpin 1.18s linear infinite
+@@ appleAiAuraWake
+DEF: 0%{opacity:0;transform:scale(.94)}
+10%{opacity:.98;transform:scale(1.035)}
+34%{opacity:.86;transform:scale(1.024) translateY(-2px)}
+66%{opacity:.68;transform:scale(1.014) translateY(0)}
+86%{opacity:.34;transform:scale(1.006)}
+to{opacity:0;transform:scale(1)}
+
+USE: .ai-startup-aura :: appleAiAuraWake 5.4s ease-out both
+@@ advisorSparkBurst
+DEF: 0%{opacity:0;transform:translate(-50%,-50%) translateZ(0) rotate(0) scale(.18);filter:blur(0) brightness(1)}
+9%{opacity:1;transform:translate(-50%,-50%) translate3d(var(--spark-flare-x),var(--spark-flare-y),0) rotate(0) scale(1.25);filter:blur(0) brightness(2.25)}
+48%{opacity:.86;transform:translate(-50%,-50%) translate3d(var(--spark-mid-x),var(--spark-mid-y),0) rotate(var(--spark-mid-spin)) scale(.88);filter:blur(0) brightness(1.74)}
+to{opacity:0;transform:translate(-50%,-50%) translate3d(var(--spark-end-x),var(--spark-end-y),0) rotate(var(--spark-spin)) scale(.24);filter:blur(2.5px) brightness(1.9)}
+
+USE: .advisor-spark :: advisorSparkBurst var(--spark-duration) cubic-bezier(.2,.74,.28,1) var(--spark-delay) forwards
+@@ chatScrollImpact
+DEF: 0%,to{transform:translateZ(0) skew(0)}
+14%{transform:translate3d(8px,-5px,0) skew(-3deg)}
+28%{transform:translate3d(-10px,4px,0) skew(4deg)}
+42%{transform:translate3d(7px,3px,0) skew(-2deg)}
+56%{transform:translate3d(-5px,-2px,0) skew(2deg)}
+70%{transform:translate3d(3px,1px,0) skew(-1deg)}
+
+USE: .support-messages.bottom-bursting :: chatScrollImpact .72s steps(5,end),chatBottomColorBurn .98s linear
+@@ chatBottomColorBurn
+DEF: 0%{filter:saturate(1) hue-rotate(0deg) brightness(1)}
+35%{filter:saturate(3.2) hue-rotate(120deg) brightness(1.2)}
+72%{filter:saturate(2.4) hue-rotate(260deg) brightness(1.12)}
+to{filter:saturate(1.15) hue-rotate(360deg) brightness(1)}
+
+USE: .support-messages.bottom-bursting :: chatScrollImpact .72s steps(5,end),chatBottomColorBurn .98s linear
+@@ chatBottomPortal
+DEF: 0%{opacity:0;transform:translateY(42px) scaleX(.12) scaleY(.16) rotate(0)}
+12%{opacity:1;transform:translateY(10px) scaleX(1.22) scaleY(.72) rotate(8deg)}
+48%{opacity:.92;transform:translateY(-10px) scaleX(1.05) scaleY(1.18) rotate(-6deg)}
+to{opacity:0;transform:translateY(-64px) scaleX(1.8) scaleY(.24) rotate(18deg)}
+
+USE: .support-messages.bottom-bursting:before :: chatBottomPortal 1.08s cubic-bezier(.17,.84,.3,1) forwards,borderSpin .68s linear infinite
+@@ chatBottomSpikes
+DEF: 0%{opacity:0;transform:translateY(72px) scaleY(.16)}
+16%{opacity:1;transform:translateY(8px) scaleY(1.34)}
+62%{opacity:.86;transform:translateY(-20px) scaleY(.82)}
+to{opacity:0;transform:translateY(-58px) scaleY(.22)}
+
+USE: .support-messages.bottom-bursting:after :: chatBottomSpikes .76s cubic-bezier(.2,.7,.2,1) forwards
+@@ chatImpactRing
+DEF: 0%{opacity:0;transform:translate(-50%,50%) scale(0) rotate(0)}
+12%{opacity:1;transform:translate(-50%,50%) scale(.42) rotate(24deg)}
+58%{opacity:.92;transform:translate(-50%,50%) scale(1.22) rotate(210deg)}
+to{opacity:0;transform:translate(-50%,50%) scale(2.35) rotate(420deg)}
+
+USE: .chat-bottom-impact:before :: chatImpactRing .9s cubic-bezier(.1,.82,.24,1) forwards
+@@ chatImpactCore
+DEF: 0%{opacity:0;transform:translate(-50%,50%) scale(.12) rotate(0);filter:blur(9px) brightness(2.6) saturate(4)}
+18%{opacity:1;transform:translate(-50%,50%) scale(1.28) rotate(120deg);filter:blur(0) brightness(2.1) saturate(3.2)}
+52%{opacity:.88;transform:translate(-50%,50%) scale(.82) rotate(260deg)}
+to{opacity:0;transform:translate(-50%,50%) scale(2.1) rotate(520deg);filter:blur(12px) brightness(2.8) saturate(4)}
+
+USE: .chat-bottom-impact:after :: chatImpactCore .82s ease-out forwards,borderSpin .36s linear infinite
+@@ chatShardLaunch
+DEF: 0%{opacity:0;transform:translate(-50%,50%) rotate(var(--chat-shard-angle)) translateY(0) scale(.18);filter:blur(0) brightness(1)}
+12%{opacity:1;transform:translate(-50%,50%) rotate(var(--chat-shard-angle)) translateY(calc(var(--chat-shard-distance) * -.34)) scale(1.2,.78);filter:blur(0) brightness(2.4)}
+66%{opacity:.86;transform:translate(-50%,50%) rotate(calc(var(--chat-shard-angle) + 96deg)) translateY(calc(var(--chat-shard-distance) * -1.08)) scale(.72,1.32);filter:blur(.4px) brightness(1.8)}
+to{opacity:0;transform:translate(-50%,50%) rotate(calc(var(--chat-shard-angle) + 220deg)) translateY(calc(var(--chat-shard-distance) * -1.68)) scale(.08,1.9);filter:blur(4px) brightness(2.2)}
+
+USE: .chat-bottom-impact i :: chatShardLaunch 1.12s cubic-bezier(.16,.78,.24,1) forwards
+@@ botParticleBodyAssemble
+DEF: 0%{opacity:1;background-color:#eef4ff00;border-color:#2257ff00;transform:perspective(720px) translate3d(0,18px,0) rotateX(18deg) rotateY(-10deg) scale(.96);filter:blur(14px) brightness(2.2) saturate(3.4);clip-path:polygon(0 100%,100% 100%,100% 100%,0 100%)}
+18%{background-color:#eef4ff00;border-color:#2257ff00;clip-path:polygon(0 86%,18% 74%,36% 90%,54% 72%,72% 88%,100% 66%,100% 100%,0 100%)}
+38%{background-color:#eef4ff0a;border-color:#2257ff0a;transform:perspective(720px) translate3d(0,10px,0) rotateX(10deg) rotateY(-6deg) scale(.98);filter:blur(8px) brightness(1.9) saturate(2.8);clip-path:polygon(0 56%,12% 38%,24% 64%,38% 30%,54% 58%,70% 22%,86% 46%,100% 18%,100% 100%,0 100%)}
+62%{background-color:#eef4ff2e;border-color:#2257ff0d;transform:perspective(720px) translate3d(0,4px,0) rotateX(4deg) rotateY(-2deg) scale(.995);filter:blur(3px) brightness(1.45) saturate(2);clip-path:polygon(0 18%,10% 8%,22% 24%,34% 4%,48% 18%,62% 0,78% 12%,100% 0,100% 100%,0 100%)}
+82%{background-color:#eef4ffb8;border-color:#2257ff14;transform:perspective(720px) translate3d(0,1px,0) rotateX(1deg) rotateY(0) scale(1);filter:blur(.6px) brightness(1.14) saturate(1.45);clip-path:polygon(0 0,18% 0,18% 2%,34% 0,34% 1%,56% 0,56% 3%,76% 0,76% 1%,100% 0,100% 100%,0 100%)}
+to{opacity:1;background-color:#eef4ff;border-color:#2257ff1a;transform:perspective(720px) translateZ(0) rotateX(0) rotateY(0) scale(1);clip-path:polygon(0 0,100% 0,100% 100%,0 100%);filter:none}
+
+USE: .new-bot-message :: botParticleBodyAssemble 1.68s cubic-bezier(.16,.9,.18,1) both,botHoloSettle 2.2s ease-out both
+@@ botParticleBackgroundWash
+DEF: 0%{opacity:1;filter:blur(5px) brightness(1.6) saturate(2.2)}
+28%{opacity:1;filter:blur(2px) brightness(1.42) saturate(2)}
+62%{opacity:.96;filter:blur(.6px) brightness(1.18) saturate(1.45);background:radial-gradient(circle at 14% 88%,rgba(255,255,255,.8),transparent 0 18%,rgba(0,255,231,.13) 19% 36%,transparent 37%),linear-gradient(180deg,#eef4ff38,#eef4ff1a)}
+86%{opacity:.52;filter:blur(0) brightness(1.08) saturate(1.18);background:linear-gradient(180deg,#eef4ffb8,#eef4ff85)}
+to{opacity:0;filter:none;background:linear-gradient(180deg,#eef4ff00,#eef4ff00)}
+
+USE: .bot-background-particle-cloud :: botParticleBackgroundWash 1.68s cubic-bezier(.16,.9,.18,1) both
+@@ botBackgroundParticleAssemble
+DEF: 0%{opacity:0;transform:translate3d(var(--particle-from-x),var(--particle-from-y),var(--particle-from-z)) rotateX(54deg) rotateY(-34deg) rotate(0) scale(.2);filter:blur(5px) brightness(2) saturate(2.8)}
+18%{opacity:.96;transform:translate3d(calc(var(--particle-from-x) * .52),calc(var(--particle-from-y) * .52),calc(var(--particle-from-z) * .45)) rotateX(34deg) rotateY(-20deg) rotate(72deg) scale(1.5);filter:blur(2px) brightness(1.8) saturate(2.2)}
+52%{opacity:1;transform:translate3d(calc(var(--particle-from-x) * .12),calc(var(--particle-from-y) * .12),calc(var(--particle-from-z) * .08)) rotateX(8deg) rotateY(-4deg) rotate(170deg) scale(1.08);filter:blur(.5px) brightness(1.34) saturate(1.7)}
+78%{opacity:.9;transform:translateZ(0) rotateX(0) rotateY(0) rotate(260deg) scale(.9);filter:blur(0) brightness(1.1) saturate(1.25)}
+to{opacity:0;transform:translateZ(0) rotateX(0) rotateY(0) rotate(360deg) scale(.36);filter:blur(1px) brightness(1.35)}
+
+USE: .bot-background-particle :: botBackgroundParticleAssemble 1.46s cubic-bezier(.12,.88,.16,1) var(--particle-delay) both
+@@ botParticleAssemble
+DEF: 0%{opacity:0;transform:translate3d(var(--particle-from-x),var(--particle-from-y),var(--particle-from-z)) rotateX(76deg) rotateY(-48deg) rotate(0) scale(.18);filter:blur(6px) brightness(2.8) saturate(4)}
+16%{opacity:1;transform:translate3d(calc(var(--particle-from-x) * .62),calc(var(--particle-from-y) * .62),calc(var(--particle-from-z) * .56)) rotateX(48deg) rotateY(-28deg) rotate(60deg) scale(1.65);filter:blur(2px) brightness(2.6) saturate(3.4)}
+48%{opacity:1;transform:translate3d(calc(var(--particle-from-x) * .22),calc(var(--particle-from-y) * .22),calc(var(--particle-from-z) * .18)) rotateX(18deg) rotateY(-10deg) rotate(160deg) scale(1.12);filter:blur(.8px) brightness(2) saturate(2.5)}
+74%{opacity:.96;transform:translateZ(0) rotateX(0) rotateY(0) rotate(260deg) scale(.84);filter:blur(0) brightness(1.8) saturate(2)}
+to{opacity:0;transform:translateZ(0) rotateX(0) rotateY(0) rotate(360deg) scale(.22);filter:blur(2px) brightness(2.4) saturate(3)}
+
+USE: .bot-particle :: botParticleAssemble 1.28s cubic-bezier(.12,.9,.18,1) var(--particle-delay) both
+@@ botTextParticleAssemble
+DEF: 0%{opacity:0;transform:translate3d(0,10px,0) scale(.96);filter:blur(8px) brightness(2.3) saturate(3.4);text-shadow:10px -8px rgba(255,79,216,.9),-10px 8px rgba(0,255,231,.86),0 0 22px rgba(255,212,71,.9)}
+28%{opacity:0;transform:translate3d(0,9px,0) scale(.97);filter:blur(7px) brightness(2) saturate(3)}
+52%{opacity:.36;transform:translate3d(0,5px,0) scale(.99);filter:blur(4px) brightness(1.7) saturate(2.4)}
+74%{opacity:.94;transform:translate3d(0,1px,0) scale(1.006);filter:blur(1px) brightness(1.2) saturate(1.5);text-shadow:2px 0 rgba(255,79,216,.46),-2px 0 rgba(0,255,231,.44),0 0 12px rgba(255,212,71,.5)}
+to{opacity:1;transform:translateZ(0) scale(1);filter:none;text-shadow:none}
+
+USE: .new-bot-message .message-text :: botTextParticleAssemble 1.68s cubic-bezier(.14,1.12,.22,1) both
+@@ botHoloSettle
+DEF: 0%{box-shadow:-18px 20px 34px #00ffe761,18px -14px 34px #ff4fd847,0 0 0 1px #fffc}
+38%{box-shadow:0 18px 30px #2257ff2e,0 0 34px #00ffe73d,inset 0 0 20px #ffffff94}
+to{box-shadow:0 8px 18px #2257ff14,inset 0 0 #fff0}
+
+USE: .new-bot-message :: botParticleBodyAssemble 1.68s cubic-bezier(.16,.9,.18,1) both,botHoloSettle 2.2s ease-out both
+@@ botDissolveSweep
+DEF: 0%{opacity:0;transform:translate3d(-34%,28%,0) rotate(-18deg) scale(.36)}
+14%{opacity:1}
+54%{opacity:.9;transform:translate3d(16%,-12%,0) rotate(8deg) scale(1.08)}
+to{opacity:0;transform:translate3d(72%,-46%,0) rotate(24deg) scale(1.72,.42)}
+
+USE: .new-bot-message:before :: botDissolveSweep .94s cubic-bezier(.16,.88,.24,1) both
+@@ botDissolveParticles
+DEF: 0%{opacity:0;transform:translate3d(-38px,26px,0) rotate(-10deg) scale(.7);background-position:0 0;filter:blur(3px) brightness(1.8)}
+18%{opacity:1;filter:blur(0) brightness(1.5)}
+62%{opacity:.82;transform:translate3d(18px,-16px,0) rotate(7deg) scale(1.08);background-position:64px -38px}
+to{opacity:0;transform:translate3d(72px,-48px,0) rotate(22deg) scale(1.48);background-position:118px -76px;filter:blur(5px) brightness(2)}
+
+USE: .new-bot-message:after :: botDissolveParticles 1.12s cubic-bezier(.18,.84,.26,1) both
+@@ botDissolveField
+DEF: 0%{opacity:0;transform:translate3d(-52%,34%,0) rotateY(68deg) rotateX(-18deg) scale(.28,1.4)}
+18%{opacity:.96}
+48%{opacity:.78;transform:translate3d(-4%,0,0) rotateY(-12deg) rotateX(6deg) scale(1.06,.92)}
+to{opacity:0;transform:translate3d(64%,-20%,0) rotateY(-54deg) rotateX(16deg) scale(1.32,.34)}
+
+USE: .bot-dissolve-field :: botDissolveField .92s cubic-bezier(.13,.9,.25,1) both
+@@ floatingGlow
+DEF: 0%,to{box-shadow:0 28px 72px #10182742}
+50%{box-shadow:0 28px 82px #2257ff52}
+
+USE: .support-panel :: supportPreviewPop .46s cubic-bezier(.12,1.12,.18,1) both,floatingGlow 3.6s ease-in-out infinite
+USE: .support-panel-expanded :: supportPanelExpand .62s cubic-bezier(.12,.92,.18,1) both,floatingGlow 3.6s ease-in-out infinite
+@@ panelGradient
+DEF: 0%,to{background-position:0% 50%}
+50%{background-position:100% 50%}
+
+USE: .support-head :: panelGradient 4s ease-in-out infinite
+@@ chipPulse
+DEF: 0%,to{transform:translateY(0)}
+50%{transform:translateY(-2px)}
+
+USE: .quick-questions button :: chipPulse 2.5s ease-in-out infinite
+@@ discoSweep
+DEF: 0%{transform:rotate(-26deg)}
+to{transform:rotate(26deg)}
+
+USE: .disco-beam :: discoSweep var(--beam-sway) ease-in-out var(--beam-delay) infinite alternate,discoStrobe 1.7s steps(2) var(--beam-delay) infinite
+@@ discoStrobe
+DEF: 0%,to{opacity:.4}
+50%{opacity:.62}
+
+USE: .disco-beam :: discoSweep var(--beam-sway) ease-in-out var(--beam-delay) infinite alternate,discoStrobe 1.7s steps(2) var(--beam-delay) infinite
+@@ neonFramePulse
+DEF: 0%{opacity:.66}
+to{opacity:1}
+
+USE: .neon-frame :: neonFramePulse 1.3s ease-in-out infinite alternate,neonFrameHue 3.6s linear infinite
+@@ neonFrameHue
+DEF: to{filter:hue-rotate(360deg)}
+
+USE: .neon-frame :: neonFramePulse 1.3s ease-in-out infinite alternate,neonFrameHue 3.6s linear infinite
+@@ dvdWobble
+DEF: 0%,to{rotate:-7deg}
+50%{rotate:7deg}
+
+USE: .dvd-core :: dvdWobble 2.3s ease-in-out infinite
+USE: .dvd-core.dvd-pop :: dvdPop .46s cubic-bezier(.16,1.5,.3,1) both,dvdWobble 2.3s ease-in-out .46s infinite
+@@ dvdPop
+DEF: 0%{scale:1.55 .62}
+55%{scale:.78 1.32}
+to{scale:1 1}
+
+USE: .dvd-core.dvd-pop :: dvdPop .46s cubic-bezier(.16,1.5,.3,1) both,dvdWobble 2.3s ease-in-out .46s infinite
+@@ hitCounterBlink
+DEF: 0%,to{border-color:#ffd447}
+50%{border-color:#00ffe7}
+
+USE: .hit-counter :: hitCounterBlink 1.15s steps(2) infinite
+@@ hitEyeSpin
+DEF: to{rotate:360deg}
+
+USE: .hit-counter-eye :: hitEyeSpin 2.6s linear infinite
+@@ hitDigitFlip
+DEF: 0%{transform:rotateX(120deg) scale(1.5);filter:brightness(3)}
+to{transform:rotateX(0) scale(1);filter:none}
+
+USE: .hit-digit :: hitDigitFlip .42s cubic-bezier(.2,1.4,.4,1) both
+@@ strobeFlicker
+DEF: 0%{transform:translate(-9px);filter:hue-rotate(0deg)}
+33%{transform:translate(11px);filter:hue-rotate(120deg) brightness(1.4)}
+66%{transform:translate(-6px);filter:hue-rotate(240deg)}
+to{transform:translate(0);filter:hue-rotate(360deg)}
+
+USE: .glitch-strobe.on :: strobeFlicker .38s steps(3) both
+@@ glitchShakeMargins
+DEF: 0%{margin-left:3px;margin-top:-2px}
+50%{margin-left:-4px;margin-top:2px}
+to{margin-left:1px;margin-top:0}
+
+USE: html.glitch-shake body :: glitchShakeMargins 126ms steps(2) infinite
+@@ advisorJackpotIn
+DEF: 0%{opacity:0;transform:scale(1.15)}
+to{opacity:1;transform:scale(1)}
+
+USE: .advisor-jackpot :: advisorJackpotIn .32s cubic-bezier(.16,1.4,.3,1) both
+@@ advisorSunshaftSpin
+DEF: to{transform:translate(-50%,-50%) rotate(360deg)}
+
+USE: .advisor-jackpot-sunshafts :: advisorSunshaftSpin 8s linear infinite
+@@ advisorSunshaftPulse
+DEF: 0%{opacity:.4}
+to{opacity:.9}
+
+USE: .advisor-jackpot-sunshafts i :: advisorSunshaftPulse 1.1s ease-in-out var(--shaft-delay) infinite alternate
+@@ advisorReelSlam
+DEF: 0%{transform:translateY(-140%) scale(.5) rotate(-18deg);opacity:0}
+70%{transform:translateY(12%) scale(1.12) rotate(4deg)}
+to{transform:translateY(0) scale(1) rotate(0);opacity:1}
+
+USE: .advisor-jackpot-reel :: advisorReelSlam .52s cubic-bezier(.16,1.6,.3,1) var(--reel-delay) both
+@@ advisorReelSpin
+DEF: 0%,to{transform:translateY(0) scale(1)}
+50%{transform:translateY(-6px) scale(1.15)}
+
+USE: .advisor-jackpot-reel b :: advisorReelSpin .18s steps(2) infinite
+@@ advisorMarqueeBg
+DEF: to{background-position:300% 0}
+
+USE: .advisor-jackpot-marquee :: advisorMarqueeBg 1.4s linear infinite
+@@ advisorMarqueeScroll
+DEF: 0%{transform:translate(0)}
+to{transform:translate(-50%)}
+
+USE: .advisor-jackpot-marquee span :: advisorMarqueeScroll 6s linear infinite
+@@ advisorBannerSlam
+DEF: 0%{opacity:0;transform:skew(-14deg) rotate(-18deg) scale(.2)}
+60%{opacity:1;transform:skew(-4deg) rotate(6deg) scale(1.35)}
+to{opacity:1;transform:skew(-8deg) rotate(-2deg) scale(1)}
+
+USE: .advisor-jackpot-banner :: wordartGradient .9s linear infinite,advisorBannerSlam .7s cubic-bezier(.16,1.5,.3,1) both,fireworksWordartSpin 1.1s steps(3,end) .7s infinite
+@@ advisorJackpotFlash
+DEF: 0%{opacity:.95}
+12%{opacity:.35}
+24%{opacity:.7}
+to{opacity:.08}
+
+USE: .advisor-jackpot-flash :: advisorJackpotFlash 4.2s ease-out both
+@@ advisorCoinRain
+DEF: 0%{transform:translateY(0) rotate(0);opacity:1}
+to{transform:translateY(110vh) rotate(540deg);opacity:.2}
+
+USE: .advisor-jackpot-coins i :: advisorCoinRain 1.6s linear calc(var(--coin-i) * -.08s) infinite
+@@ advisorJackpotShake
+DEF: 0%{transform:translate(0) rotate(0)}
+20%{transform:translate(-14px,8px) rotate(-.9deg)}
+40%{transform:translate(16px,-10px) rotate(1deg)}
+60%{transform:translate(-12px,-8px) rotate(-.7deg)}
+80%{transform:translate(10px,12px) rotate(.8deg)}
+to{transform:translate(-6px,4px) rotate(-.4deg)}
+
+USE: html.advisor-jackpot-shake body :: advisorJackpotShake 85ms steps(2) infinite

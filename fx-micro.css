@@ -1,0 +1,132 @@
+/* ==========================================================
+   fx-micro.css — 卡片/导航/通用微交互包（richify §7 蓝粉白化）
+   卡片摇摆 / 宣言条 / 导航光带 / 链接浮动色差 / Pride 徽章
+   ========================================================== */
+
+/* ---------- §7 卡片玻璃摇摆（glassCardWobble）+ 旋转锥形渐变边框（borderSpin 全覆盖） ---------- */
+.card {
+    border: 1.5px solid transparent;
+    background:
+        linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+        conic-gradient(from var(--spin), rgba(91, 206, 250, .75), rgba(245, 169, 184, .75), rgba(255, 255, 255, .95), rgba(91, 206, 250, .75)) border-box;
+    animation: glassCardWobble 6.4s ease-in-out infinite,
+               borderSpin 5s linear infinite;
+}
+.card:hover { animation-play-state: paused, running; }
+
+/* ---------- §7 宣言条（dashedGlow + 内容跑马灯 navMarquee） ---------- */
+.notice-strip {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border-bottom: 1px dashed rgba(91, 206, 250, .4);
+    background: rgba(255, 255, 255, .55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    animation: dashedGlow 1.2s ease-in-out infinite alternate,
+               glassCardWobble 3.4s ease-in-out infinite;
+}
+.notice-track {
+    display: flex;
+    white-space: nowrap;
+    animation: navMarquee 24s linear infinite;
+}
+.notice-track span { flex: 0 0 auto; }
+
+/* ---------- Hero 标题发光脉冲（titleGlow） ---------- */
+.hero-title {
+	animation: textGradient 5s linear infinite, titleGlow 2.4s ease-in-out infinite;
+}
+@keyframes titleGlow {
+	0%, 100% { filter: drop-shadow(0 0 5px rgba(91, 206, 250, .4)) drop-shadow(0 0 2px rgba(245, 169, 184, .3)); }
+	50%      { filter: drop-shadow(0 0 22px rgba(245, 169, 184, .65)) drop-shadow(0 0 10px rgba(91, 206, 250, .5)); }
+}
+
+/* ---------- §7 导航液态光带（liquidSweep） ---------- */
+.site-nav { overflow: hidden; }
+.site-nav::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    transform: translateX(-120%) rotate(18deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .6), transparent);
+    pointer-events: none;
+    animation: liquidSweep 2.6s linear infinite;
+}
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    transform: translateX(-140%) rotate(18deg);
+    background: linear-gradient(90deg, transparent, rgba(91, 206, 250, .35), transparent);
+    pointer-events: none;
+    animation: liquidSweep 2.2s linear infinite;
+}
+
+/* ---------- §7 导航链接浮动 + 色差（navLiquidFloat / navChromatic） ---------- */
+.nav-links a {
+    animation: navLiquidFloat 2.7s ease-in-out infinite,
+               navChromatic 1.9s linear infinite;
+}
+.nav-links a:nth-child(2n) { animation-delay: .3s, .2s; }
+.nav-links a:nth-child(3n) { animation-delay: .6s, .5s; }
+
+/* ---------- §7 Pride 徽章（languageRainbowScroll 蓝粉白化） ---------- */
+.pride-badge {
+    margin-left: 14px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: .82rem;
+    font-weight: 900;
+    letter-spacing: .04em;
+    background: linear-gradient(90deg, var(--trans-blue), #fff, var(--trans-pink), var(--trans-blue));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    border: 1.5px solid rgba(245, 169, 184, .6);
+    animation: languageRainbowScroll 2.4s linear infinite;
+}
+
+/* ==========================================================
+   关键帧
+   ========================================================== */
+@keyframes glassCardWobble {
+    0%, 100% { filter: saturate(1) hue-rotate(0deg); }
+    50%      { filter: saturate(1.18) hue-rotate(-4deg); }
+}
+@keyframes dashedGlow {
+    0%   { box-shadow: 0 4px 16px rgba(51, 65, 85, .05), 0 0 0 rgba(91, 206, 250, 0); }
+    100% { box-shadow: 0 4px 16px rgba(51, 65, 85, .05), 0 0 18px rgba(91, 206, 250, .28); }
+}
+@keyframes liquidSweep {
+    0%   { transform: translate(-140%) rotate(18deg); }
+    100% { transform: translate(420%) rotate(18deg); }
+}
+@keyframes navMarquee {
+    0%   { transform: translateZ(0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes navLiquidFloat {
+    0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); filter: saturate(1.05); }
+    50%      { transform: translateY(-3px) rotateX(7deg) rotateY(-4deg); filter: saturate(1.4); }
+}
+@keyframes navChromatic {
+    0%, 100% { text-shadow: 0 0 0 rgba(245, 169, 184, 0), 0 0 0 rgba(91, 206, 250, 0); }
+    50%      { text-shadow: 1px 0 rgba(245, 169, 184, .5), -1px 0 rgba(91, 206, 250, .5); }
+}
+@keyframes languageRainbowScroll {
+    to { background-position: 300% 50%; }
+}

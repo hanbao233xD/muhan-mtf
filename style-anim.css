@@ -1,0 +1,979 @@
+/* ==========================================================
+   沐涵个人主页 — style-anim.css
+   完全移植自 richify.net 的 133 个动画效果，并进行蓝粉白主题化适配
+   配色规范：
+   --trans-blue: #5BCEFA
+   --trans-pink: #F5A9B8
+   --trans-white: #FFFFFF
+   --trans-blue-deep: #38bdf8;
+   --trans-pink-deep: #f472b6;
+   ========================================================== */
+
+/* ---------- 1. 全屏氛围层 ---------- */
+
+/* pageGradient - 页面背景渐变流动 */
+@keyframes pageGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* auroraFloat - 极光漂移 */
+@keyframes auroraFloat {
+    0% { transform: translateZ(0) scale(1); }
+    100% { transform: translate3d(12vw, -8vh, 0) scale(1.18); }
+}
+
+/* gridDrift - 激光网格漂移 */
+@keyframes gridDrift {
+    0% { background-position: 0 0; }
+    100% { background-position: 52px 52px; }
+}
+
+/* scanMove - CRT扫描线滚动 */
+@keyframes scanMove {
+    0% { transform: translateY(-16px); }
+    100% { transform: translateY(16px); }
+}
+
+/* sparklePop - 星点闪烁 */
+@keyframes sparklePop {
+    0%, 100% { opacity: .12; transform: translateY(0) scale(.7); }
+    45% { opacity: .95; transform: translateY(-18px) scale(1.2); }
+}
+
+/* codeRain - 代码雨流动 */
+@keyframes codeRain {
+    0% { transform: translateY(-24%); opacity: .55; }
+    100% { transform: translateY(38%); opacity: .95; }
+}
+
+/* codeRainPulse - 代码雨文字荧光呼吸 */
+@keyframes codeRainPulse {
+    0%, 100% {
+        filter: brightness(1);
+        text-shadow: 0 0 8px rgba(91, 206, 250, .9), 0 0 18px rgba(245, 169, 184, .5);
+    }
+    50% {
+        filter: brightness(1.45);
+        text-shadow: 0 0 14px rgba(91, 206, 250, 1), 0 0 32px rgba(245, 169, 184, .85), 0 0 48px rgba(255, 255, 255, .45);
+    }
+}
+
+/* globalRefraction - 全屏折射光带扫动 */
+@keyframes globalRefraction {
+    0% { transform: translate3d(-12%, 0, 0) skew(-8deg); background-position: 0% 50%; }
+    100% { transform: translate3d(12%, 0, 0) skew(8deg); background-position: 240% 50%; }
+}
+
+/* technoBreathing - 特效层整体呼吸 */
+@keyframes technoBreathing {
+    0%, 100% { opacity: .18; transform: scale(1); }
+    50% { opacity: .3; transform: scale(1.015); }
+}
+
+/* ambientSheetDrift - 环境光片漂移 */
+@keyframes ambientSheetDrift {
+    0% { transform: translate3d(-2%, -1%, 0); }
+    100% { transform: translate3d(2%, 1%, 0); }
+}
+
+
+/* ---------- 2. 底部跑马灯 + 3D 菱形 ---------- */
+
+/* marqueeMove - 跑马灯横向滚动 */
+@keyframes marqueeMove {
+    0% { transform: translate(0); }
+    100% { transform: translate(-50%); }
+}
+
+/* marqueeColorShift - 跑马灯底色流动 */
+@keyframes marqueeColorShift {
+    0% { background-position: 0% 50%; filter: hue-rotate(0deg) saturate(1.2); }
+    100% { background-position: 100% 50%; filter: hue-rotate(360deg) saturate(1.7); }
+}
+
+/* diamondDangle - 3D菱形上下晃动 */
+@keyframes diamondDangle {
+    0% { transform: translateY(0) rotate(-7deg) scale(.92); }
+    100% { transform: translateY(-10px) rotate(7deg) scale(1.1); }
+}
+
+/* diamondPanic - 菱形外发光闪烁 */
+@keyframes diamondPanic {
+    0%, 100% {
+        filter: drop-shadow(0 0 13px rgba(91, 206, 250, .95)) drop-shadow(0 0 26px rgba(245, 169, 184, .76)) hue-rotate(0deg);
+    }
+    50% {
+        filter: drop-shadow(0 0 22px rgba(245, 169, 184, .92)) drop-shadow(0 0 38px rgba(255, 255, 255, .92)) hue-rotate(45deg);
+    }
+}
+
+
+/* ---------- 3. 迪斯科光束 + 霓虹边框 ---------- */
+
+/* discoSweep - 光束左右摇摆 */
+@keyframes discoSweep {
+    0% { transform: rotate(-26deg); }
+    100% { transform: rotate(26deg); }
+}
+
+/* discoStrobe - 光束透明度频闪 */
+@keyframes discoStrobe {
+    0%, 100% { opacity: .4; }
+    50% { opacity: .62; }
+}
+
+/* neonFramePulse - 霓虹边框发光脉冲 */
+@keyframes neonFramePulse {
+    0% { opacity: .66; }
+    100% { opacity: 1; }
+}
+
+/* neonFrameHue - 边框色相循环 */
+@keyframes neonFrameHue {
+    to { filter: hue-rotate(360deg); }
+}
+
+
+/* ---------- 4. 复古彩蛋：DVD / 计数器 / Glitch ---------- */
+
+/* dvdWobble - DVD方块左右摇摆 */
+@keyframes dvdWobble {
+    0%, 100% { rotate: -7deg; }
+    50% { rotate: 7deg; }
+}
+
+/* dvdPop - DVD撞墙果冻形变 */
+@keyframes dvdPop {
+    0% { scale: 1.55 .62; }
+    55% { scale: .78 1.32; }
+    to { scale: 1 1; }
+}
+
+/* hitCounterBlink - 计数器边框闪烁 */
+@keyframes hitCounterBlink {
+    0%, 100% { border-color: var(--trans-pink); }
+    50% { border-color: var(--trans-blue); }
+}
+
+/* hitEyeSpin - 眼睛图标旋转 */
+@keyframes hitEyeSpin {
+    to { rotate: 360deg; }
+}
+
+/* hitDigitFlip - 计数器数字翻牌 */
+@keyframes hitDigitFlip {
+    0% { transform: rotateX(120deg) scale(1.5); filter: brightness(3); }
+    to { transform: rotateX(0) scale(1); filter: none; }
+}
+
+/* strobeFlicker - 全屏故障强闪 */
+@keyframes strobeFlicker {
+    0% { transform: translate(-9px); filter: hue-rotate(0deg); }
+    33% { transform: translate(11px); filter: hue-rotate(120deg) brightness(1.4); }
+    66% { transform: translate(-6px); filter: hue-rotate(240deg); }
+    to { transform: translate(0); filter: hue-rotate(360deg); }
+}
+
+/* glitchShakeMargins - 页面抖动 */
+@keyframes glitchShakeMargins {
+    0% { margin-left: 3px; margin-top: -2px; }
+    50% { margin-left: -4px; margin-top: 2px; }
+    to { margin-left: 1px; margin-top: 0; }
+}
+
+
+/* ---------- 5. 液态玻璃光标 + 全局点击爆裂 ---------- */
+
+/* trailFade - 拖尾点淡出 */
+@keyframes trailFade {
+    0% { opacity: .95; transform: translate(-50%, -50%) scale(1); }
+    to { opacity: 0; transform: translate(-50%, -50%) scale(3.4) rotate(45deg); }
+}
+
+/* liquidCursorBreath - 光标填充层呼吸 */
+@keyframes liquidCursorBreath {
+    0%, to { transform: scale(1); border-radius: 999px; }
+    45% { transform: scale(1.045); border-radius: 999px; }
+    70% { transform: scale(.96); border-radius: 999px; }
+}
+
+/* liquidCursorMagnetBreath - 磁吸状态非对称呼吸 */
+@keyframes liquidCursorMagnetBreath {
+    0%, to { transform: scale(1); filter: brightness(1) saturate(1.55); }
+    42% { transform: scale(1.025, .985); filter: brightness(1.18) saturate(2.05) hue-rotate(14deg); }
+    72% { transform: scale(.99, 1.018); filter: brightness(1.08) saturate(1.82) hue-rotate(-8deg); }
+}
+
+/* liquidCursorLens - 透镜层旋转 */
+@keyframes liquidCursorLens {
+    0% { --spin: 0deg; transform: rotate(0) scale(.92); }
+    to { --spin: 360deg; transform: rotate(360deg) scale(.92); }
+}
+
+/* liquidCursorSpark - 火花点旋转闪烁 */
+@keyframes liquidCursorSpark {
+    0%, to { transform: rotate(0) scale(1); opacity: .48; }
+    50% { transform: rotate(18deg) scale(1.14); opacity: .9; }
+}
+
+/* liquidCursorSnap - 吸附果冻 */
+@keyframes liquidCursorSnap {
+    0% { transform: scale(.72, 1.34); filter: brightness(1.5) saturate(2.2); }
+    34% { transform: scale(1.18, .78); filter: brightness(1.24) saturate(1.9); }
+    58% { transform: scale(.9, 1.12); }
+    to { transform: scale(1); filter: none; }
+}
+
+/* liquidCursorClick - 点击果冻 */
+@keyframes liquidCursorClick {
+    0% { transform: scale(1); }
+    28% { transform: scale(.72, 1.34); filter: brightness(1.7) saturate(2.6) hue-rotate(28deg); }
+    62% { transform: scale(1.28, .76); }
+    to { transform: scale(1); filter: none; }
+}
+
+/* magnetEdgeFlash - 磁吸边缘闪光 */
+@keyframes magnetEdgeFlash {
+    0% { opacity: 0; transform: scale(.58, .72); filter: blur(10px) brightness(1.8) saturate(2.4); }
+    18% { opacity: 1; transform: scale(1.1, .86); filter: blur(0) brightness(1.32) saturate(2.1); }
+    44% { opacity: .92; transform: scale(.96, 1.08); }
+    to { opacity: 0; transform: scale(1.28, 1.34); filter: blur(8px) brightness(1.1) saturate(1.2); }
+}
+
+/* magnetEdgeOrbit - 磁吸光环旋转 */
+@keyframes magnetEdgeOrbit {
+    0% { --spin: 0deg; opacity: 0; transform: scale(.76) rotate(0); filter: blur(6px); }
+    22% { opacity: .9; transform: scale(1.02) rotate(24deg); filter: blur(0); }
+    to { --spin: 360deg; opacity: 0; transform: scale(1.42) rotate(148deg); filter: blur(7px); }
+}
+
+/* magnetParticlePop - 磁吸粒子飞溅 */
+@keyframes magnetParticlePop {
+    0% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--magnet-angle)) translate(0) scale(.12); }
+    20% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--magnet-angle)) translate(calc(var(--magnet-distance) * .34)) scale(1.16, .74); }
+    72% { opacity: .86; transform: translate(-50%, -50%) rotate(var(--magnet-angle)) translate(var(--magnet-distance)) scale(.9, 1.12); }
+    to { opacity: 0; transform: translate(-50%, -50%) rotate(var(--magnet-angle)) translate(calc(var(--magnet-distance) * 1.46)) scale(.12); filter: blur(2px); }
+}
+
+/* clickShockRing - 点击冲击波圆环 */
+@keyframes clickShockRing {
+    0% { opacity: .95; transform: translate(-50%, -50%) scale(.18) rotate(0); filter: blur(0) saturate(2.2); }
+    58% { opacity: .74; transform: translate(-50%, -50%) scale(2.9) rotate(16deg); filter: blur(.6px) saturate(1.7); }
+    to { opacity: 0; transform: translate(-50%, -50%) scale(4.4) rotate(42deg); filter: blur(3px) saturate(1); }
+}
+
+/* clickCorePop - 点击核心闪光 */
+@keyframes clickCorePop {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(.2); }
+    38% { opacity: .94; transform: translate(-50%, -50%) scale(1.8, .74) rotate(28deg); }
+    to { opacity: 0; transform: translate(-50%, -50%) scale(.1) rotate(90deg); }
+}
+
+/* clickParticleBurst - 点击粒子飞溅 */
+@keyframes clickParticleBurst {
+    0% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--click-angle)) translate(0) scale(.22) rotate(0); filter: blur(1px); }
+    16% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--click-angle)) translate(calc(var(--click-distance) * .22)) scale(1.2, .72) rotate(calc(var(--click-spin) * .18)); filter: blur(0); }
+    72% { opacity: .92; transform: translate(-50%, -50%) rotate(var(--click-angle)) translate(var(--click-distance)) scale(.84, 1.18) rotate(calc(var(--click-spin) * .72)); }
+    to { opacity: 0; transform: translate(-50%, -50%) rotate(var(--click-angle)) translate(calc(var(--click-distance) * 1.42)) scale(.12) rotate(var(--click-spin)); filter: blur(3px); }
+}
+
+/* lightToastPop - 提示条弹入淡出 */
+@keyframes lightToastPop {
+    0% { transform: translate(-50%, 18px) scale(.9); filter: saturate(1); }
+    12% { transform: translate(-50%) scale(1.08); filter: saturate(1.5); }
+    24% { transform: translate(-50%) scale(1); }
+    82% { transform: translate(-50%) scale(1); }
+    to { transform: translate(-50%, -10px) scale(.96); filter: saturate(1); }
+}
+
+
+/* ---------- 6. 磁吸果冻按钮 ---------- */
+
+/* magnetButtonJelly - 按钮整体果冻挤压 */
+@keyframes magnetButtonJelly {
+    0% { transform: translateZ(0) scale(1); }
+    28% { transform: translate3d(0, -2px, 0) scale(1.08, .88); }
+    54% { transform: translate3d(0, 1px, 0) scale(.96, 1.1); }
+    78% { transform: translate3d(0, -1px, 0) scale(1.03, .98); }
+    to { transform: translateZ(0) scale(1); }
+}
+
+/* magnetInnerJelly - 按钮文字层错位果冻 */
+@keyframes magnetInnerJelly {
+    0% { transform: translate(0) scale(1); }
+    30% { transform: translate(3px, -2px) scale(1.1, .86) rotate(1.5deg); }
+    58% { transform: translate(-2px, 1px) scale(.94, 1.1) rotate(-1deg); }
+    to { transform: translate(0) scale(1); }
+}
+
+/* magnetButtonAura - 磁吸状态光环色相/亮度循环 */
+@keyframes magnetButtonAura {
+    0% { --spin: 0deg; filter: saturate(1.45) brightness(1.08) hue-rotate(0deg); }
+    50% { --spin: 180deg; filter: saturate(2.05) brightness(1.2) hue-rotate(22deg); }
+    to { --spin: 360deg; filter: saturate(1.45) brightness(1.08) hue-rotate(0deg); }
+}
+
+/* goldenLogoWheel - 金色滚轮式亮度流转 */
+@keyframes goldenLogoWheel {
+    0% { --spin: 0deg; filter: saturate(1.25) brightness(1.02); }
+    50% { --spin: 180deg; filter: saturate(1.9) brightness(1.16) contrast(1.12); }
+    to { --spin: 360deg; filter: saturate(1.35) brightness(1.04); }
+}
+
+/* goldenLogoHalo - 悬停按钮后光环旋转 */
+@keyframes goldenLogoHalo {
+    0% { transform: rotate(0) scale(1.08); }
+    to { transform: rotate(360deg) scale(1.08); }
+}
+
+/* newGenerationBounce - 文字层剧烈弹跳 */
+@keyframes newGenerationBounce {
+    0% { transform: translate(0) rotate(0) scale(1); }
+    16% { transform: translate(18px, -11px) rotate(7deg) scaleX(1.18) scaleY(.82); }
+    32% { transform: translate(-15px, 12px) rotate(-9deg) scaleX(.86) scaleY(1.24); }
+    48% { transform: translate(24px, 7px) rotate(12deg) scaleX(1.28) scaleY(.78); }
+    64% { transform: translate(-22px, -10px) rotate(-13deg) scaleX(.8) scaleY(1.3); }
+    82% { transform: translate(8px, 16px) rotate(5deg) scaleX(1.12) scaleY(.9); }
+    to { transform: translate(0) rotate(0) scale(1); }
+}
+
+/* shineSweep - 高光条周期性扫过 */
+@keyframes shineSweep {
+    0%, 48% { left: -45%; }
+    70%, to { left: 118%; }
+}
+
+/* buttonGlow - 按钮常态饱和度呼吸 */
+@keyframes buttonGlow {
+    0%, to { filter: saturate(1); }
+    50% { filter: saturate(1.28) brightness(1.06); }
+}
+
+
+/* ---------- 7. 卡片 / 导航 / 通用微交互 ---------- */
+
+/* glassCardWobble - 卡片常态下饱和度/色相轻微摇摆 */
+@keyframes glassCardWobble {
+    0%, to { filter: saturate(1) hue-rotate(0deg); }
+    50% { filter: saturate(1.28) hue-rotate(5deg); }
+}
+
+/* borderSpin - 锥形渐变边框持续旋转 */
+@keyframes borderSpin {
+    to { --spin: 360deg; }
+}
+
+/* panelShimmer - 卡片表面微光掠过 */
+@keyframes panelShimmer {
+    0%, 52% { transform: translate(-90%) rotate(12deg); opacity: 0; }
+    65% { opacity: .8; }
+    to { transform: translate(120%) rotate(12deg); opacity: 0; }
+}
+
+/* dashedGlow - 外发光阴影呼吸 */
+@keyframes dashedGlow {
+    0% { box-shadow: 0 12px 28px rgba(51, 65, 85, .05), 0 0 rgba(91, 206, 250, 0); }
+    to { box-shadow: 0 12px 28px rgba(51, 65, 85, .05), 0 0 26px rgba(91, 206, 250, .24); }
+}
+
+/* metricPanic - 数据卡持续上下浮动 */
+@keyframes metricPanic {
+    0%, to { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.018); }
+}
+
+/* headerLiquid - 页头液态呼吸 */
+@keyframes headerLiquid {
+    0%, to { transform: translateY(0) scaleX(1); filter: saturate(1.1); }
+    50% { transform: translateY(1px) scaleX(1.006); filter: saturate(1.42); }
+}
+
+/* liquidSweep - 页头与导航项液态光带扫过 */
+@keyframes liquidSweep {
+    0% { transform: translate(-120%) rotate(18deg); }
+    to { transform: translate(260%) rotate(18deg); }
+}
+
+/* navMarquee - 导航项无缝横向跑马灯 */
+@keyframes navMarquee {
+    0% { transform: translateZ(0); }
+    to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* navLiquidFloat - 导航链接3D浮动 */
+@keyframes navLiquidFloat {
+    0%, to { transform: translateY(0) rotateX(0) rotateY(0); filter: saturate(1.1); }
+    50% { transform: translateY(-3px) rotateX(7deg) rotateY(-4deg); filter: saturate(1.55); }
+}
+
+/* navChromatic - 导航文字双色残影脉冲 */
+@keyframes navChromatic {
+    0%, to { text-shadow: 0 0 0 rgba(245, 169, 184, 0), 0 0 0 rgba(91, 206, 250, 0); }
+    50% { text-shadow: 1px 0 rgba(245, 169, 184, .36), -1px 0 rgba(91, 206, 250, .36); }
+}
+
+/* richPulse - logo缩放脉冲 */
+@keyframes richPulse {
+    0%, to { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+/* languageRainbowScroll - 语言切换器彩虹渐变文字流动 */
+@keyframes languageRainbowScroll {
+    to { background-position: 300% 50%; }
+}
+
+
+/* ---------- 8. 文字特效 ---------- */
+
+/* textGradient - 渐变文字色彩流动 */
+@keyframes textGradient {
+    0% { background-position: 0% 50%; }
+    to { background-position: 300% 50%; }
+}
+
+/* wordartGradient - 艺术字渐变流动 */
+@keyframes wordartGradient {
+    0% { background-position: 50% 0%; filter: drop-shadow(0 0 12px rgba(91, 206, 250, .42)) hue-rotate(0deg); }
+    50% { background-position: 50% 100%; filter: drop-shadow(0 0 22px rgba(245, 169, 184, .58)) hue-rotate(24deg); }
+    to { background-position: 50% 0%; filter: drop-shadow(0 0 14px rgba(255, 255, 255, .48)) hue-rotate(0deg); }
+}
+
+/* wordartWobble - 艺术字左右倾斜摇摆 */
+@keyframes wordartWobble {
+    0%, to { transform: skew(-7deg) rotate(-1.2deg) translateZ(0); }
+    50% { transform: skew(-9deg) rotate(.6deg) translate3d(2px, -1px, 0); }
+}
+
+/* wordartCompactWobble - 紧凑版艺术字小幅摇摆 */
+@keyframes wordartCompactWobble {
+    0%, to { transform: skew(-5deg) rotate(-.8deg) translateZ(0); }
+    50% { transform: skew(-6deg) rotate(.4deg) translate3d(1px, -1px, 0); }
+}
+
+/* wordartShine - 艺术字表面高光扫过 */
+@keyframes wordartShine {
+    0% { background-position: 0 0, -160% 0; }
+    to { background-position: 0 0, 180% 0; }
+}
+
+/* wordartMiniPulse - 标题色相/饱和度小幅脉冲 */
+@keyframes wordartMiniPulse {
+    0%, to { filter: hue-rotate(0deg) saturate(1.1); }
+    50% { filter: hue-rotate(18deg) saturate(1.55); }
+}
+
+/* rainbowTextHover - 悬停文字彩虹渐变流动 */
+@keyframes rainbowTextHover {
+    0% { background-position: 0% 50%, 0% 50%; filter: hue-rotate(0deg) saturate(1.4) contrast(1); }
+    50% { background-position: 140% 50%, 90% 50%; filter: hue-rotate(110deg) saturate(2.8) contrast(1.22); }
+    to { background-position: 280% 50%, 180% 50%; filter: hue-rotate(360deg) saturate(1.8) contrast(1.08); }
+}
+
+/* textGlitchGlow - 文字色差发光 */
+@keyframes textGlitchGlow {
+    0%, to { filter: none; text-shadow: 0 0 12px rgba(91, 206, 250, .12); }
+    48% { filter: none; }
+    52% { filter: hue-rotate(14deg); text-shadow: 1px 0 rgba(245, 169, 184, .34), -1px 0 rgba(91, 206, 250, .34), 0 0 18px rgba(255, 255, 255, .28); }
+}
+
+
+/* ---------- 9. Hero 区 ---------- */
+
+/* heroBorderGlow - 主图边框光晕呼吸 */
+@keyframes heroBorderGlow {
+    0%, to { opacity: .45; transform: scale(1); }
+    50% { opacity: .68; transform: scale(1.015); }
+}
+
+/* visualFloat - 主图整体上下浮动 */
+@keyframes visualFloat {
+    0%, to { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-10px) rotate(.4deg); }
+}
+
+/* heroImageFrameRotate - 主图装饰边框旋转 */
+@keyframes heroImageFrameRotate {
+    to { transform: rotate(360deg) scale(1.04); }
+}
+
+/* bubbleChromatic - 气泡透明度微闪 */
+@keyframes bubbleChromatic {
+    0%, to { opacity: .94; }
+    50% { opacity: 1; }
+}
+
+/* bubbleShine - 气泡表面高光扫过 */
+@keyframes bubbleShine {
+    0% { transform: translate(-80%) rotate(22deg); }
+    to { transform: translate(320%) rotate(22deg); }
+}
+
+/* bubbleGlassSweep - 气泡区玻璃折射片扫动 */
+@keyframes bubbleGlassSweep {
+    0% { transform: translate3d(-18%, 0, 0) skew(-10deg); }
+    to { transform: translate3d(18%, 0, 0) skew(10deg); }
+}
+
+/* sparkleNoiseDrift - 气泡区噪点微漂移 */
+@keyframes sparkleNoiseDrift {
+    0%, to { opacity: .28; transform: translateZ(0) scale(1); }
+    50% { opacity: .42; transform: translate3d(8px, -6px, 0) scale(1.02); }
+}
+
+/* bubbleMegaPop - 气泡生命周期动画 */
+@keyframes bubbleMegaPop {
+    0% { opacity: 0; transform: translate(-50%, 26px) rotate(var(--bubble-tilt)) scale(.45); }
+    5% { opacity: 1; transform: translate(-50%, -14px) rotate(calc(var(--bubble-tilt) * -.35)) scale(1.12, .9); }
+    11% { transform: translate(-50%) rotate(calc(var(--bubble-tilt) * .18)) scale(.96, 1.06); }
+    18% { transform: translate(-50%, -8px) rotate(calc(var(--bubble-tilt) * .12)) scale(1.03); }
+    84% { opacity: 1; transform: translate(calc(-50% + var(--bubble-drift-soft)), -26px) rotate(0) scale(1); }
+    88% { opacity: 1; transform: translate(calc(-50% + var(--bubble-drift-soft)), -32px) rotate(calc(var(--bubble-tilt) * .35)) scale(1.08); }
+    93% { opacity: .72; transform: translate(calc(-50% + var(--bubble-drift-mid)), -56px) rotate(var(--bubble-tilt)) scale(1.2, .72); }
+    to { opacity: 0; transform: translate(calc(-50% + var(--bubble-drift)), -126px) rotate(var(--bubble-tilt)) scale(1.62, .18); }
+}
+
+/* bubbleShardBurst - 气泡爆裂碎片飞溅 */
+@keyframes bubbleShardBurst {
+    0%, 84% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--shard-angle)) scale(0); }
+    89% { opacity: .98; transform: translate(-50%, -50%) rotate(var(--shard-angle)) scale(.85, 1.2); }
+    95% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--shard-angle)) translateY(calc(var(--shard-distance) * -1)) rotate(120deg) scale(1.2, .72); }
+    to { opacity: 0; transform: translate(-50%, -50%) rotate(var(--shard-angle)) translateY(calc(var(--shard-distance) * -2.4)) rotate(300deg) scale(.12, 1.9); }
+}
+
+/* heroChromaticPulse - 色差脉冲 */
+@keyframes heroChromaticPulse {
+    0%, to { filter: drop-shadow(0 0 0 rgba(91, 206, 250, 0)); }
+    50% { filter: drop-shadow(5px 0 0 rgba(245, 169, 184, .16)) drop-shadow(-5px 0 0 rgba(91, 206, 250, .14)); }
+}
+
+/* imageSaturate - 图片饱和度增强 */
+@keyframes imageSaturate {
+    0% { filter: saturate(1) contrast(1); }
+    to { filter: saturate(1.22) contrast(1.05); }
+}
+
+/* panelBob - 面板上下浮动 */
+@keyframes panelBob {
+    0%, to { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+
+/* ---------- 10. AI 顾问机器人 + 聊天面板 ---------- */
+
+/* supportPop - 客服按钮入场 */
+@keyframes supportPop {
+    0% { transform: translateY(12px) scale(.96); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* supportPreviewPop - 聊天面板展开 */
+@keyframes supportPreviewPop {
+    0% { opacity: 0; filter: blur(12px) brightness(2.1) saturate(2.8); clip-path: circle(0 at var(--support-origin-x) var(--support-origin-y)); }
+    45% { opacity: 1; filter: blur(1px) brightness(1.22) saturate(1.8); clip-path: circle(145% at var(--support-origin-x) var(--support-origin-y)); }
+    to { opacity: 1; filter: none; clip-path: circle(145% at var(--support-origin-x) var(--support-origin-y)); }
+}
+
+/* supportPanelExpand - 面板放大 */
+@keyframes supportPanelExpand {
+    0% { opacity: .92; filter: blur(7px) brightness(1.7) saturate(2.2); clip-path: inset(28% 12% 28% 12% round 22px); }
+    36% { opacity: 1; filter: blur(1px) brightness(1.22) saturate(1.7); clip-path: inset(0 round 22px); }
+    to { opacity: 1; filter: none; clip-path: inset(0 round 22px); }
+}
+
+/* supportPanelReturn - 面板关闭退场 */
+@keyframes supportPanelReturn {
+    0% { opacity: 1; transform: translateZ(0) scale(1) rotateX(0) rotate(0); filter: none; clip-path: circle(145% at var(--support-origin-x) var(--support-origin-y)); }
+    22% { opacity: 1; transform: translate3d(0, -8px, 0) scale(.98, .88) rotateX(10deg) rotate(-4deg); filter: brightness(1.42) saturate(2.4); }
+    54% { opacity: .88; transform: translate3d(0, 6px, 0) scale(.42, .34) rotateX(64deg) rotate(18deg); filter: blur(4px) brightness(2.1) saturate(3.4) hue-rotate(84deg); clip-path: circle(42% at var(--support-origin-x) var(--support-origin-y)); }
+    78% { opacity: .62; transform: translate3d(0, 10px, 0) scale(.16, .08) rotateX(82deg) rotate(-32deg); filter: blur(9px) brightness(2.8) saturate(4); clip-path: polygon(50% 0, 58% 40%, 100% 12%, 66% 52%, 100% 88%, 58% 62%, 50% 100%, 42% 62%, 0 88%, 34% 52%, 0 12%, 42% 40%); }
+    to { opacity: 0; transform: translate3d(0, 14px, 0) scale(.02) rotateX(90deg) rotate(60deg); filter: blur(16px) brightness(3) saturate(4); clip-path: circle(0 at var(--support-origin-x) var(--support-origin-y)); }
+}
+
+/* supportPreviewGlobe - 预览球体旋转 */
+@keyframes supportPreviewGlobe {
+    to { --spin: 360deg; transform: rotate(360deg); }
+}
+
+/* floatingGlow - 面板投影光晕呼吸 */
+@keyframes floatingGlow {
+    0%, to { box-shadow: 0 28px 72px rgba(16, 24, 39, .22); }
+    50% { box-shadow: 0 28px 82px rgba(91, 206, 250, .4); }
+}
+
+/* panelGradient - 聊天头部渐变流动 */
+@keyframes panelGradient {
+    0%, to { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* chipPulse - 快捷问题轻浮动 */
+@keyframes chipPulse {
+    0%, to { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+/* appleAiEdgeWake - 启动霓虹边框唤醒 */
+@keyframes appleAiEdgeWake {
+    0% { opacity: 0; padding: 12px; transform: scale(.966); filter: drop-shadow(0 0 0 rgba(245, 169, 184, 0)) drop-shadow(0 0 0 rgba(91, 206, 250, 0)); }
+    8% { opacity: 1; padding: 8px; transform: scale(1.012); }
+    18% { opacity: 1; padding: 6px; filter: drop-shadow(-12px 0 34px rgba(245, 169, 184, 1)) drop-shadow(12px 0 38px rgba(91, 206, 250, .94)) drop-shadow(0 12px 30px rgba(255, 255, 255, .72)); }
+    42% { opacity: 1; padding: 5px; transform: scale(1.018); filter: drop-shadow(0 -12px 36px rgba(91, 206, 250, .96)) drop-shadow(16px 10px 40px rgba(245, 169, 184, .84)) drop-shadow(-14px 12px 34px rgba(255, 255, 255, .72)); }
+    72% { opacity: .9; padding: 4px; transform: scale(1.01); }
+    88% { opacity: .72; padding: 3px; transform: scale(1.004); }
+    to { opacity: 0; padding: 2px; transform: scale(1); filter: drop-shadow(0 0 0 rgba(245, 169, 184, 0)) drop-shadow(0 0 0 rgba(91, 206, 250, 0)); }
+}
+
+/* appleAiAuraWake - 配套光晕缩放 */
+@keyframes appleAiAuraWake {
+    0% { opacity: 0; transform: scale(.94); }
+    10% { opacity: .98; transform: scale(1.035); }
+    34% { opacity: .86; transform: scale(1.024) translateY(-2px); }
+    66% { opacity: .68; transform: scale(1.014) translateY(0); }
+    86% { opacity: .34; transform: scale(1.006); }
+    to { opacity: 0; transform: scale(1); }
+}
+
+/* advisorSparkBurst - 助手火花粒子飞行 */
+@keyframes advisorSparkBurst {
+    0% { opacity: 0; transform: translate(-50%, -50%) translateZ(0) rotate(0) scale(.18); filter: blur(0) brightness(1); }
+    9% { opacity: 1; transform: translate(-50%, -50%) translate3d(var(--spark-flare-x), var(--spark-flare-y), 0) rotate(0) scale(1.25); filter: blur(0) brightness(2.25); }
+    48% { opacity: .86; transform: translate(-50%, -50%) translate3d(var(--spark-mid-x), var(--spark-mid-y), 0) rotate(var(--spark-mid-spin)) scale(.88); filter: blur(0) brightness(1.74); }
+    to { opacity: 0; transform: translate(-50%, -50%) translate3d(var(--spark-end-x), var(--spark-end-y), 0) rotate(var(--spark-spin)) scale(.24); filter: blur(2.5px) brightness(1.9); }
+}
+
+/* chatScrollImpact - 消息列表触底撞击抖动 */
+@keyframes chatScrollImpact {
+    0%, to { transform: translateZ(0) skew(0); }
+    14% { transform: translate3d(8px, -5px, 0) skew(-3deg); }
+    28% { transform: translate3d(-10px, 4px, 0) skew(4deg); }
+    42% { transform: translate3d(7px, 3px, 0) skew(-2deg); }
+    56% { transform: translate3d(-5px, -2px, 0) skew(2deg); }
+    70% { transform: translate3d(3px, 1px, 0) skew(-1deg); }
+}
+
+/* chatBottomColorBurn - 触底颜色灼烧 */
+@keyframes chatBottomColorBurn {
+    0% { filter: saturate(1) hue-rotate(0deg) brightness(1); }
+    35% { filter: saturate(3.2) hue-rotate(120deg) brightness(1.2); }
+    72% { filter: saturate(2.4) hue-rotate(260deg) brightness(1.12); }
+    to { filter: saturate(1.15) hue-rotate(360deg) brightness(1); }
+}
+
+/* chatBottomPortal - 底部传送门光片 */
+@keyframes chatBottomPortal {
+    0% { opacity: 0; transform: translateY(42px) scaleX(.12) scaleY(.16) rotate(0); }
+    12% { opacity: 1; transform: translateY(10px) scaleX(1.22) scaleY(.72) rotate(8deg); }
+    48% { opacity: .92; transform: translateY(-10px) scaleX(1.05) scaleY(1.18) rotate(-6deg); }
+    to { opacity: 0; transform: translateY(-64px) scaleX(1.8) scaleY(.24) rotate(18deg); }
+}
+
+/* chatBottomSpikes - 底部尖刺窜起 */
+@keyframes chatBottomSpikes {
+    0% { opacity: 0; transform: translateY(72px) scaleY(.16); }
+    16% { opacity: 1; transform: translateY(8px) scaleY(1.34); }
+    62% { opacity: .86; transform: translateY(-20px) scaleY(.82); }
+    to { opacity: 0; transform: translateY(-58px) scaleY(.22); }
+}
+
+/* chatImpactRing - 冲击环放大 */
+@keyframes chatImpactRing {
+    0% { opacity: 0; transform: translate(-50%, 50%) scale(0) rotate(0); }
+    12% { opacity: 1; transform: translate(-50%, 50%) scale(.42) rotate(24deg); }
+    58% { opacity: .92; transform: translate(-50%, 50%) scale(1.22) rotate(210deg); }
+    to { opacity: 0; transform: translate(-50%, 50%) scale(2.35) rotate(420deg); }
+}
+
+/* chatImpactCore - 冲击核心扩散 */
+@keyframes chatImpactCore {
+    0% { opacity: 0; transform: translate(-50%, 50%) scale(.12) rotate(0); filter: blur(9px) brightness(2.6) saturate(4); }
+    18% { opacity: 1; transform: translate(-50%, 50%) scale(1.28) rotate(120deg); filter: blur(0) brightness(2.1) saturate(3.2); }
+    52% { opacity: .88; transform: translate(-50%, 50%) scale(.82) rotate(260deg); }
+    to { opacity: 0; transform: translate(-50%, 50%) scale(2.1) rotate(520deg); filter: blur(12px) brightness(2.8) saturate(4); }
+}
+
+/* chatShardLaunch - 触底碎片发射 */
+@keyframes chatShardLaunch {
+    0% { opacity: 0; transform: translate(-50%, 50%) rotate(var(--chat-shard-angle)) translateY(0) scale(.18); filter: blur(0) brightness(1); }
+    12% { opacity: 1; transform: translate(-50%, 50%) rotate(var(--chat-shard-angle)) translateY(calc(var(--chat-shard-distance) * -.34)) scale(1.2, .78); filter: blur(0) brightness(2.4); }
+    66% { opacity: .86; transform: translate(-50%, 50%) rotate(calc(var(--chat-shard-angle) + 96deg)) translateY(calc(var(--chat-shard-distance) * -1.08)) scale(.72, 1.32); filter: blur(.4px) brightness(1.8); }
+    to { opacity: 0; transform: translate(-50%, 50%) rotate(calc(var(--chat-shard-angle) + 220deg)) translateY(calc(var(--chat-shard-distance) * -1.68)) scale(.08, 1.9); filter: blur(4px) brightness(2.2); }
+}
+
+/* botParticleBodyAssemble - 消息体3D粒子组装 */
+@keyframes botParticleBodyAssemble {
+    0% { opacity: 1; background-color: transparent; border-color: rgba(91, 206, 250, 0); transform: perspective(720px) translate3d(0, 18px, 0) rotateX(18deg) rotateY(-10deg) scale(.96); filter: blur(14px) brightness(2.2) saturate(3.4); clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+    18% { background-color: transparent; border-color: rgba(91, 206, 250, 0); clip-path: polygon(0 86%, 18% 74%, 36% 90%, 54% 72%, 72% 88%, 100% 66%, 100% 100%, 0 100%); }
+    38% { background-color: rgba(255, 255, 255, .04); border-color: rgba(91, 206, 250, .04); transform: perspective(720px) translate3d(0, 10px, 0) rotateX(10deg) rotateY(-6deg) scale(.98); filter: blur(8px) brightness(1.9) saturate(2.8); clip-path: polygon(0 56%, 12% 38%, 24% 64%, 38% 30%, 54% 58%, 70% 22%, 86% 46%, 100% 18%, 100% 100%, 0 100%); }
+    62% { background-color: rgba(255, 255, 255, .18); border-color: rgba(91, 206, 250, .08); transform: perspective(720px) translate3d(0, 4px, 0) rotateX(4deg) rotateY(-2deg) scale(.995); filter: blur(3px) brightness(1.45) saturate(2); clip-path: polygon(0 18%, 10% 8%, 22% 24%, 34% 4%, 48% 18%, 62% 0, 78% 12%, 100% 0, 100% 100%, 0 100%); }
+    82% { background-color: rgba(255, 255, 255, .72); border-color: rgba(91, 206, 250, .14); transform: perspective(720px) translate3d(0, 1px, 0) rotateX(1deg) rotateY(0) scale(1); filter: blur(.6px) brightness(1.14) saturate(1.45); clip-path: polygon(0 0, 18% 0, 18% 2%, 34% 0, 34% 1%, 56% 0, 56% 3%, 76% 0, 76% 1%, 100% 0, 100% 100%, 0 100%); }
+    to { opacity: 1; background-color: #ffffff; border-color: rgba(91, 206, 250, .18); transform: perspective(720px) translateZ(0) rotateX(0) rotateY(0) scale(1); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); filter: none; }
+}
+
+/* botParticleBackgroundWash - 背景粒子云淡出 */
+@keyframes botParticleBackgroundWash {
+    0% { opacity: 1; filter: blur(5px) brightness(1.6) saturate(2.2); }
+    28% { opacity: 1; filter: blur(2px) brightness(1.42) saturate(2); }
+    62% { opacity: .96; filter: blur(.6px) brightness(1.18) saturate(1.45); background: radial-gradient(circle at 14% 88%, rgba(255, 255, 255, .8), transparent 0 18%, rgba(91, 206, 250, .13) 19% 36%, transparent 37%), linear-gradient(180deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, .1)); }
+    86% { opacity: .52; filter: blur(0) brightness(1.08) saturate(1.18); background: linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .52)); }
+    to { opacity: 0; filter: none; background: linear-gradient(180deg, transparent, transparent); }
+}
+
+/* botBackgroundParticleAssemble - 背景粒子飞入 */
+@keyframes botBackgroundParticleAssemble {
+    0% { opacity: 0; transform: translate3d(var(--particle-from-x), var(--particle-from-y), var(--particle-from-z)) rotateX(54deg) rotateY(-34deg) rotate(0) scale(.2); filter: blur(5px) brightness(2) saturate(2.8); }
+    18% { opacity: .96; transform: translate3d(calc(var(--particle-from-x) * .52), calc(var(--particle-from-y) * .52), calc(var(--particle-from-z) * .45)) rotateX(34deg) rotateY(-20deg) rotate(72deg) scale(1.5); filter: blur(2px) brightness(1.8) saturate(2.2); }
+    52% { opacity: 1; transform: translate3d(calc(var(--particle-from-x) * .12), calc(var(--particle-from-y) * .12), calc(var(--particle-from-z) * .08)) rotateX(8deg) rotateY(-4deg) rotate(170deg) scale(1.08); filter: blur(.5px) brightness(1.34) saturate(1.7); }
+    78% { opacity: .9; transform: translateZ(0) rotateX(0) rotateY(0) rotate(260deg) scale(.9); filter: blur(0) brightness(1.1) saturate(1.25); }
+    to { opacity: 0; transform: translateZ(0) rotateX(0) rotateY(0) rotate(360deg) scale(.36); filter: blur(1px) brightness(1.35); }
+}
+
+/* botParticleAssemble - 前景粒子3D飞入 */
+@keyframes botParticleAssemble {
+    0% { opacity: 0; transform: translate3d(var(--particle-from-x), var(--particle-from-y), var(--particle-from-z)) rotateX(76deg) rotateY(-48deg) rotate(0) scale(.18); filter: blur(6px) brightness(2.8) saturate(4); }
+    16% { opacity: 1; transform: translate3d(calc(var(--particle-from-x) * .62), calc(var(--particle-from-y) * .62), calc(var(--particle-from-z) * .56)) rotateX(48deg) rotateY(-28deg) rotate(60deg) scale(1.65); filter: blur(2px) brightness(2.6) saturate(3.4); }
+    48% { opacity: 1; transform: translate3d(calc(var(--particle-from-x) * .22), calc(var(--particle-from-y) * .22), calc(var(--particle-from-z) * .18)) rotateX(18deg) rotateY(-10deg) rotate(160deg) scale(1.12); filter: blur(.8px) brightness(2) saturate(2.5); }
+    74% { opacity: .96; transform: translateZ(0) rotateX(0) rotateY(0) rotate(260deg) scale(.84); filter: blur(0) brightness(1.8) saturate(2); }
+    to { opacity: 0; transform: translateZ(0) rotateX(0) rotateY(0) rotate(360deg) scale(.22); filter: blur(2px) brightness(2.4) saturate(3); }
+}
+
+/* botTextParticleAssemble - 消息文字聚合显影 */
+@keyframes botTextParticleAssemble {
+    0% { opacity: 0; transform: translate3d(0, 10px, 0) scale(.96); filter: blur(8px) brightness(2.3) saturate(3.4); text-shadow: 10px -8px rgba(245, 169, 184, .9), -10px 8px rgba(91, 206, 250, .86), 0 0 22px rgba(255, 255, 255, .9); }
+    28% { opacity: 0; transform: translate3d(0, 9px, 0) scale(.97); filter: blur(7px) brightness(2) saturate(3); }
+    52% { opacity: .36; transform: translate3d(0, 5px, 0) scale(.99); filter: blur(4px) brightness(1.7) saturate(2.4); }
+    74% { opacity: .94; transform: translate3d(0, 1px, 0) scale(1.006); filter: blur(1px) brightness(1.2) saturate(1.5); text-shadow: 2px 0 rgba(245, 169, 184, .46), -2px 0 rgba(91, 206, 250, .44), 0 0 12px rgba(255, 255, 255, .5); }
+    to { opacity: 1; transform: translateZ(0) scale(1); filter: none; text-shadow: none; }
+}
+
+/* botHoloSettle - 全息投影阴影收敛 */
+@keyframes botHoloSettle {
+    0% { box-shadow: -18px 20px 34px rgba(91, 206, 250, .61), 18px -14px 34px rgba(245, 169, 184, .47), 0 0 0 1px #fff; }
+    38% { box-shadow: 0 18px 30px rgba(91, 206, 250, .28), 0 0 34px rgba(245, 169, 184, .3d), inset 0 0 20px rgba(255, 255, 255, .94); }
+    to { box-shadow: 0 8px 18px rgba(91, 206, 250, .14), inset 0 0 transparent; }
+}
+
+/* botDissolveSweep - 溶解扫片 */
+@keyframes botDissolveSweep {
+    0% { opacity: 0; transform: translate3d(-34%, 28%, 0) rotate(-18deg) scale(.36); }
+    14% { opacity: 1; }
+    54% { opacity: .9; transform: translate3d(16%, -12%, 0) rotate(8deg) scale(1.08); }
+    to { opacity: 0; transform: translate3d(72%, -46%, 0) rotate(24deg) scale(1.72, .42); }
+}
+
+/* botDissolveParticles - 溶解粒子流 */
+@keyframes botDissolveParticles {
+    0% { opacity: 0; transform: translate3d(-38px, 26px, 0) rotate(-10deg) scale(.7); background-position: 0 0; filter: blur(3px) brightness(1.8); }
+    18% { opacity: 1; filter: blur(0) brightness(1.5); }
+    62% { opacity: .82; transform: translate3d(18px, -16px, 0) rotate(7deg) scale(1.08); background-position: 64px -38px; }
+    to { opacity: 0; transform: translate3d(72px, -48px, 0) rotate(22deg) scale(1.48); background-position: 118px -76px; filter: blur(5px) brightness(2); }
+}
+
+/* botDissolveField - 3D溶解力场 */
+@keyframes botDissolveField {
+    0% { opacity: 0; transform: translate3d(-52%, 34%, 0) rotateY(68deg) rotateX(-18deg) scale(.28, 1.4); }
+    18% { opacity: .96; }
+    48% { opacity: .78; transform: translate3d(-4%, 0, 0) rotateY(-12deg) rotateX(6deg) scale(1.06, .92); }
+    to { opacity: 0; transform: translate3d(64%, -20%, 0) rotateY(-54deg) rotateX(16deg) scale(1.32, .34); }
+}
+
+
+/* ---------- 11. 老虎机 Jackpot 特效 ---------- */
+
+/* advisorJackpotIn - Jackpot面板入场 */
+@keyframes advisorJackpotIn {
+    0% { opacity: 0; transform: scale(1.15); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* advisorSunshaftSpin - 阳光束旋转 */
+@keyframes advisorSunshaftSpin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* advisorSunshaftPulse - 阳光束脉冲 */
+@keyframes advisorSunshaftPulse {
+    0% { opacity: .4; }
+    to { opacity: .9; }
+}
+
+/* advisorReelSlam - 滚筒砸落 */
+@keyframes advisorReelSlam {
+    0% { transform: translateY(-140%) scale(.5) rotate(-18deg); opacity: 0; }
+    70% { transform: translateY(12%) scale(1.12) rotate(4deg); }
+    to { transform: translateY(0) scale(1) rotate(0); opacity: 1; }
+}
+
+/* advisorReelSpin - 滚筒符号跳动 */
+@keyframes advisorReelSpin {
+    0%, to { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-6px) scale(1.15); }
+}
+
+/* advisorMarqueeBg - 跑马灯背景流动 */
+@keyframes advisorMarqueeBg {
+    to { background-position: 300% 0; }
+}
+
+/* advisorMarqueeScroll - 跑马灯文字滚动 */
+@keyframes advisorMarqueeScroll {
+    0% { transform: translate(0); }
+    to { transform: translate(-50%); }
+}
+
+/* advisorBannerSlam - 横幅砸入 */
+@keyframes advisorBannerSlam {
+    0% { opacity: 0; transform: skew(-14deg) rotate(-18deg) scale(.2); }
+    60% { opacity: 1; transform: skew(-4deg) rotate(6deg) scale(1.35); }
+    to { opacity: 1; transform: skew(-8deg) rotate(-2deg) scale(1); }
+}
+
+/* advisorJackpotFlash - 全屏闪光 */
+@keyframes advisorJackpotFlash {
+    0% { opacity: .95; }
+    12% { opacity: .35; }
+    24% { opacity: .7; }
+    to { opacity: .08; }
+}
+
+/* advisorCoinRain - 金币雨下落 */
+@keyframes advisorCoinRain {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    to { transform: translateY(110vh) rotate(540deg); opacity: .2; }
+}
+
+/* advisorJackpotShake - 中奖整页震屏 */
+@keyframes advisorJackpotShake {
+    0% { transform: translate(0) rotate(0); }
+    20% { transform: translate(-14px, 8px) rotate(-.9deg); }
+    40% { transform: translate(16px, -10px) rotate(1deg); }
+    60% { transform: translate(-12px, -8px) rotate(-.7deg); }
+    80% { transform: translate(10px, 12px) rotate(.8deg); }
+    to { transform: translate(-6px, 4px) rotate(-.4deg); }
+}
+
+
+/* ---------- 12. 表单 / 烟花 / 金色特效 / 其他 ---------- */
+
+/* contactFormPulse - 表单提交中脉冲 */
+@keyframes contactFormPulse {
+    0%, to { transform: scale(1); }
+    50% { transform: scale(1.012); }
+}
+
+/* contactOrbSpin - 提交按钮光球旋转 */
+@keyframes contactOrbSpin {
+    to { transform: rotate(360deg) scale(1.05); }
+}
+
+/* contactOrbPing - 雷达式扩散光圈 */
+@keyframes contactOrbPing {
+    0% { transform: scale(.85); opacity: .8; box-shadow: 0 0 rgba(245, 169, 184, .55); }
+    to { transform: scale(2.2); opacity: 0; box-shadow: 0 0 0 28px rgba(245, 169, 184, 0); }
+}
+
+/* contactRingSpin - 加载圆环旋转 */
+@keyframes contactRingSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* contactSparksTwinkle - 火花闪烁 */
+@keyframes contactSparksTwinkle {
+    0% { opacity: .55; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.06); }
+}
+
+/* fireworksRainbowSpin - 烟花彩虹边框旋转 */
+@keyframes fireworksRainbowSpin {
+    to { --spin: 360deg; }
+}
+
+/* fireworksRainbowPulse - 彩虹边框亮度脉冲 */
+@keyframes fireworksRainbowPulse {
+    0%, to { opacity: .75; filter: saturate(1.4) brightness(1); }
+    50% { opacity: 1; filter: saturate(1.9) brightness(1.25); }
+}
+
+/* fireworksScreenShake - 烟花绽放整页震屏 */
+@keyframes fireworksScreenShake {
+    0% { transform: translate(0) rotate(0); }
+    25% { transform: translate(-10px, 6px) rotate(-.6deg); }
+    50% { transform: translate(12px, -7px) rotate(.7deg); }
+    75% { transform: translate(-8px, -5px) rotate(-.4deg); }
+    to { transform: translate(7px, 8px) rotate(.5deg); }
+}
+
+/* fireworksWordartIn - 烟花艺术字弹入 */
+@keyframes fireworksWordartIn {
+    0% { opacity: 0; transform: skew(-10deg) rotate(-12deg) scale(.2) translateY(60px); }
+    55% { opacity: 1; transform: skew(-4deg) rotate(4deg) scale(1.22) translateY(-8px); }
+    to { opacity: 1; transform: skew(-6deg) rotate(-1.5deg) scale(1) translateY(0); }
+}
+
+/* fireworksWordartSpin - 艺术字扭动 */
+@keyframes fireworksWordartSpin {
+    0%, to { transform: skew(-8deg) rotate(-2deg) scale(1); }
+    25% { transform: skew(-4deg) rotate(4deg) scale(1.08); }
+    50% { transform: skew(-12deg) rotate(-5deg) scale(.94); }
+    75% { transform: skew(-2deg) rotate(3deg) scale(1.1); }
+}
+
+/* fireworksFlash - 烟花闪光渐隐 */
+@keyframes fireworksFlash {
+    0% { opacity: .9; }
+    18% { opacity: .35; }
+    to { opacity: 0; }
+}
+
+/* goldFxFlow - 金色文字渐变流动 */
+@keyframes goldFxFlow {
+    0% { background-position: 0% 50%; }
+    to { background-position: 280% 50%; }
+}
+
+/* goldFxShine - 金色高光扫过 */
+@keyframes goldFxShine {
+    0% { background-position: 160% 0; }
+    to { background-position: -60% 0; }
+}
+
+/* goldFxFloat - 金字歪斜浮动 */
+@keyframes goldFxFloat {
+    0%, to { transform: skew(-6deg) rotate(-1.5deg) scale(1) translateY(0); }
+    50% { transform: skew(-4deg) rotate(1deg) scale(1.04) translateY(-6px); }
+}
+
+/* goldFxPulse - 金字光晕模糊脉冲 */
+@keyframes goldFxPulse {
+    0%, to { opacity: .72; filter: blur(.2px) brightness(.95); }
+    50% { opacity: .95; filter: blur(.45px) brightness(1.15); }
+}
+
+/* cheapDepthConflict - 景深冲突感 */
+@keyframes cheapDepthConflict {
+    0%, to { opacity: .92; transform: translateZ(0); }
+    50% { opacity: 1; transform: translate3d(0, -1px, 0); }
+}
+
+
+/* ==========================================================
+   补充：项目自定义基础动画（非 richify 原生，页面所需）
+   ========================================================== */
+
+/* fadeIn — 通用淡入 */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* pulseGlow — 时间线节点发光脉冲（蓝粉交替） */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 2px var(--trans-blue), 0 0 14px rgba(91, 206, 250, .8);
+    }
+    50% {
+        box-shadow: 0 0 0 2px var(--trans-pink), 0 0 20px rgba(245, 169, 184, .9);
+    }
+}
